@@ -1,0 +1,134 @@
+import Core.MyFacade;
+
+import Core.MyFacade;
+trace("main:"+MyFacade.Main);
+
+
+
+import Core;
+trace(Core.MAIN);
+import org.puremvc.as3.interfaces.IFacade;
+import org.puremvc.as3.patterns.facade.Facade;
+import Core.model.NetProxy;
+import com.smartfoxserver.v2.SmartFox;
+import com.smartfoxserver.v2.core.SFSEvent;
+import com.tools.DebugTools;
+import com.smartfoxserver.v2.entities.data.SFSObject;
+import com.tools.JSONTools;
+import Core.GameEvents;
+import roomEvents.KillerRoomEvents;
+import Core.view.PlusMediator;
+import Core.Resource;
+import Core.model.data.UserData;
+import Core.model.data.MainData;
+
+var faced:IFacade;
+faced=Facade.getInstance();
+trace("faced:"+faced);
+var netP:NetProxy;
+trace("NetProxy.NAME)"+NetProxy.NAME);
+
+trace(faced.retrieveProxy(NetProxy.NAME));
+
+netP=faced.retrieveProxy(NetProxy.NAME);
+trace("netp"+netP);
+
+
+var cnt:
+cnt=netP.connection;
+
+trace("connection"+cnt);
+
+cnt.addEventListener(SFSEvent.EXTENSION_RESPONSE, onMsg);
+function onMsg(msgO:*):void
+{
+   trace("get message:"+msgO);
+   trace(msgO.params);
+   var responseParams:* = msgO.params.params;
+   var cmd:*;
+   cmd={};
+   cmd = responseParams.toObject();
+   trace("cmd"+cmd);
+   trace("responseParams)"+responseParams);
+   DebugTools.debugTrace(JSONTools.getJSONString(cmd),"MSG",cmd);
+   if(cmd["UserId"]==UserData.UserInfo.UserId) return;
+  var copyList:Array=[2002671,3106306,3067010];
+ var i:int;
+ var len:int;
+ len=copyList.length;
+for(i=0;i<len;i++)
+{
+  if(cmd["UserId"]==copyList[i])
+{
+ sendChat(cmd["Msg"]);
+}
+}
+  //if(cmd["UserId"]==2002671||cmd["UserId"]==3106306||3067010==cmd["UserId"])
+ // {
+ //   sendChat(cmd["Msg"]);
+ // }
+}
+function sendChat(msg:String):void
+{
+var data = new Object();
+data.Msg = msg;
+data.Color = "";
+data.cmd = "SayInRoom";
+faced.sendNotification(GameEvents.NETEVENT.NETCALL, data);
+
+}
+trace("import success");
+
+[MSG]:{"UserId":1549754,"UserName":"nightcutmare","Color":"16777215","Site":8,"Msg":"11","Device":""} data
+
+
+import Core;
+trace(Core.MAIN);
+import org.puremvc.as3.interfaces.IFacade;
+import org.puremvc.as3.patterns.facade.Facade;
+import Core.model.NetProxy;
+import com.smartfoxserver.v2.SmartFox;
+import com.smartfoxserver.v2.core.SFSEvent;
+import com.tools.DebugTools;
+import com.smartfoxserver.v2.entities.data.SFSObject;
+import com.tools.JSONTools;
+import Core.GameEvents;
+import roomEvents.KillerRoomEvents;
+import Core.view.PlusMediator;
+import Core.Resource;
+import Core.model.data.UserData;
+import Core.model.data.MainData;
+
+var myID:int;
+myID=1549754;
+var faced:IFacade;
+faced=Facade.getInstance();
+trace("faced:"+faced);
+var data = new Object();
+data.Msg = "ÁÄÌì²âÊÔ°¡qqqq";
+data.Color = "";
+data.cmd = "SayInRoom";
+//faced.sendNotification(GameEvents.NETEVENT.NETCALL, data);
+//faced.sendNotification(KillerRoomEvents.PLAYERLIST_OPEN);
+DebugTools.debugTrace("myID:"+UserData.UserInfo.UserId,"MSG");
+
+DebugTools.debugTrace("myValues:"+MainData.LoginInfo.uservalues,"MSG");
+//3046791
+seeFriendList(myID);
+//UserData.UserInfo.UserId=3072991;
+//faced.sendNotification(PlusMediator.OPEN, {url:Resource.FriendPath, x:600, y:100});
+
+function seeFriendList(pID:int):void
+{
+  UserData.UserInfo.UserId=pID;
+  faced.sendNotification(PlusMediator.OPEN, {url:Resource.FriendPath, x:600, y:100});
+}
+sendFace();
+function sendFace():void
+{
+   var data:* = {};
+   data.Site = 1;
+   data.Type = "yun";
+   faced.sendNotification(KillerRoomEvents.BODYFACE, data);
+
+}

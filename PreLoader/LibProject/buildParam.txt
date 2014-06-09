@@ -1,0 +1,1 @@
+-locale en_US  -define=CONFIG::debug,true  -define=CONFIG::release,false -define+=VER::LABEL,"'0.1.0'" -define=CONFIG::CDN,false

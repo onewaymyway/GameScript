@@ -7,6 +7,13 @@ package com.tg.Tools
 	import flash.utils.Dictionary;
 	import flash.utils.getQualifiedClassName;
 
+	/**
+	 * applicationDomain 管理类 
+	 * @author ww
+	 * 
+	 * 主要用于便捷的从所有加载的文件中获取类定义
+	 * 
+	 */
 	public class DomainTools
 	{
 		public function DomainTools()
@@ -19,14 +26,31 @@ package com.tg.Tools
 			if(!_instance) _instance=new DomainTools;
 			return _instance;
 		}
+		/**
+		 * 添加applicationDomain 
+		 * @param domain
+		 * @param doMainName
+		 * 
+		 */
 		public  function addDomain(domain:ApplicationDomain,doMainName:String="domain"):void
 		{
 			if(!domain) return;
 			if(domainDic[domain]) return;
 			domainDic[domain]=doMainName;
 		}
+		/**
+		 * loaderInfo库
+		 */
 		private var loaderInfoDic:Dictionary=new Dictionary();
+		/**
+		 * applicationDomain库
+		 */
 		private var domainDic:Dictionary=new Dictionary();
+		/**
+		 * 添加新的loaderInfo 
+		 * @param loaderInfo
+		 * 
+		 */
 		public function addNewLoaderInfo(loaderInfo:LoaderInfo):void
 		{
 			if(!loaderInfo) return;
@@ -58,7 +82,16 @@ package com.tg.Tools
 			
 		}
 		
+		/**
+		 * 类定义库 
+		 */
 		private var classDic:Dictionary=new Dictionary();
+		/**
+		 * 获取类定义 
+		 * @param clName
+		 * @return 
+		 * 
+		 */
 		public function getDefine(clName:String):*
 		{
 			if(!classDic[clName])

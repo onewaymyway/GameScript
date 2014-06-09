@@ -24,6 +24,12 @@ THE SOFTWARE.
 请访问https://github.com/softplat/ascript获取最新的Ascript
 http://code.google.com/p/ascript-as3/ 此地址只更新swc和wiki，源码不再更新
 
+
+@ww 20140609
+本类经过本人修改
+添加了多个资源域的查找
+从而让该类能在注入到其它flash时方便的使用使用
+
 */       
 
 package parser

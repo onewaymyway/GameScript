@@ -22,6 +22,16 @@ package
 	
 	import parser.Script;
 	
+	/**
+	 * 
+	 * @author ww
+	 * 
+	 * this class is inspired by jpauclair's work 
+	 * you can find his blog here :
+	 * http://jpauclair.net/2010/02/17/one-swf-to-rule-them-all-the-almighty-preloadswf/
+	 * 
+	 * 
+	 */
 	public class MyPreloader extends Sprite
 	{
 		public function MyPreloader()
@@ -31,8 +41,17 @@ package
 			Security.allowDomain("*");
 			addEventListener(Event.ADDED_TO_STAGE, this.init);
 		}
+		/**
+		 * 是否已经初始化
+		 */
 		private var mInitialized:Boolean = false;
+		/**
+		 * 要注入的类名
+		 */
 		private var mHookClass:String="";
+		/**
+		 * 自己的类名
+		 */
 		private var myClassName:String="";
 		private function init(event:Event = null) : void
 		{
@@ -58,31 +77,31 @@ package
 			
 			DomainTools.me.addNewLoaderInfo(loaderInfo);
 			return;
-			if(!loaderInfo) return;
-			if(!loaderInfo.url) return;
-			var turl:String;
-			turl=StringToolsLib.getPreValue(loaderInfo.url,"?");
-			if(loaderInfoDic[turl]) return;
-			loaderInfoDic[turl]=loaderInfo;
-			trace("===================================================");
-			trace("PreLoader : File loaded:", loaderInfo.url, "Class:", getQualifiedClassName(loaderInfo.content));
-			
-			
-			trace("loader defines:\n"+ClassTools.getLoaderDefines(loaderInfo));
-			trace("===================================================");
-			
-			if(!domainDic[loaderInfo.applicationDomain])
-			{
-				domainDic[loaderInfo.applicationDomain]=turl;
-				trace("ooooooooooooooooooooooooooooooooooooooooo");
-				trace("new domain Added");
-				trace("ooooooooooooooooooooooooooooooooooooooooo");
-			}else
-			{
-				trace("ooooooooooooooooooooooooooooooooooooooooo");
-				trace("oldDomain");
-				trace("ooooooooooooooooooooooooooooooooooooooooo");
-			}
+//			if(!loaderInfo) return;
+//			if(!loaderInfo.url) return;
+//			var turl:String;
+//			turl=StringToolsLib.getPreValue(loaderInfo.url,"?");
+//			if(loaderInfoDic[turl]) return;
+//			loaderInfoDic[turl]=loaderInfo;
+//			trace("===================================================");
+//			trace("PreLoader : File loaded:", loaderInfo.url, "Class:", getQualifiedClassName(loaderInfo.content));
+//			
+//			
+//			trace("loader defines:\n"+ClassTools.getLoaderDefines(loaderInfo));
+//			trace("===================================================");
+//			
+//			if(!domainDic[loaderInfo.applicationDomain])
+//			{
+//				domainDic[loaderInfo.applicationDomain]=turl;
+//				trace("ooooooooooooooooooooooooooooooooooooooooo");
+//				trace("new domain Added");
+//				trace("ooooooooooooooooooooooooooooooooooooooooo");
+//			}else
+//			{
+//				trace("ooooooooooooooooooooooooooooooooooooooooo");
+//				trace("oldDomain");
+//				trace("ooooooooooooooooooooooooooooooooooooooooo");
+//			}
 
 		}
 		private function allCompleteHandler(event:Event) : void
@@ -94,12 +113,13 @@ package
 
 				dealLoaderLoader(loaderInfo);
 				
+				//如果已经初始化则不再创建调试窗口
 				if (this.mInitialized)
 				{
 					return;
 				}
 				
-				if (loaderInfo.content.root.stage == null)
+				if (loaderInfo.content.root.stage == null)//当前加载的对象不在显示列表，不创建调试窗口
 				{
 					trace("PreLoader : File loaded but no stage:", loaderInfo.url);
 					return;
@@ -186,6 +206,10 @@ package
 //			throw new Error("SetRoot");
 			return;
 		}// end function
+		/**
+		 * 将调试窗口放到最前端 
+		 * 
+		 */		
 		private function update():void
 		{
 //			throw new Error("update");
@@ -195,6 +219,9 @@ package
 
 		}
 		
+		//
+		//以下这些设置可以减少被主flash影响的概率
+		//
 		override public function get name() : String
 		{
 			return "root3";

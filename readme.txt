@@ -1,1 +1,1 @@
-as3 сно╥╫е╠╬
+as3 GameScripts

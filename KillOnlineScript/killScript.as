@@ -31,7 +31,7 @@ netP=faced.retrieveProxy(NetProxy.NAME);
 trace("netp"+netP);
 
 
-var cnt:
+var cnt;
 cnt=netP.connection;
 
 trace("connection"+cnt);
@@ -195,4 +195,6 @@ function sendChat(msg:String):void
 	faced.sendNotification(GameEvents.NETEVENT.NETCALL, data);
 	
 }
+
+
 trace("import success");

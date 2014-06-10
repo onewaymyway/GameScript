@@ -92,7 +92,7 @@ function loaded(e) : void
 	for(i=0;i<len;i++)
 	{
 		tFriend=friendList[i];
-		DebugTools.debugTrace(tFriend.userName+""+stateList[tFriend.online],"Friend",tFriend);
+		DebugTools.debugTrace(tFriend.userName+":"+stateList[tFriend.online],"Friend",tFriend);
 	}
 	if(friendData.ThePage<MaxPage)
 	{

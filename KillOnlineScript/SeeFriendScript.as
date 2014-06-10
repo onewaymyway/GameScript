@@ -70,8 +70,8 @@ function getFriendList(pid:int):void
 	T = 0;
 	var url:String="http://t1.ss911.cn/User/Friend.ss";
 	DebugTools.debugTrace("尝试获取好友信息 id:"+pid+" P:"+Rst,"Friend",Rst);
-	LoadData(ThePage);
-	function LoadData(P:int):void
+	loadData(ThePage);
+	function loadData(P:int):void
 	{
 
 
@@ -86,8 +86,8 @@ function getFriendList(pid:int):void
 		rq.method = URLRequestMethod.GET;
 		loader.load(rq);
 		loader.addEventListener(Event.COMPLETE, loaded);
-		return;
-	}// end function
+
+	}
 	
 	function loaded(e) : void
 	{
@@ -110,12 +110,12 @@ function getFriendList(pid:int):void
 		if(ThePage<MaxPage)
 		{
 			ThePage++;
-			LoadData(MaxPage);
+			loadData(MaxPage);
 		}else
 		{
 			loader=null;
 			DebugTools.debugTrace("好友结束 id:"+pid+" P:"+Rst,"Friend",Rst);
 		}
-		return;
-	}// end function
+
+	}
 }

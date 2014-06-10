@@ -1,4 +1,4 @@
-
+﻿
 
 import com.smartfoxserver.v2.SmartFox;
 import com.smartfoxserver.v2.core.SFSEvent;
@@ -42,7 +42,6 @@ DebugTools.debugTrace("myID:"+UserData.UserInfo.UserId,"MSG");
 DebugTools.debugTrace("myValues:"+MainData.LoginInfo.uservalues,"MSG");
 //3046791
 
-getFriendList(3140460);
 //seeFriendList(3140460);
 //UserData.UserInfo.UserId=3072991;
 //faced.sendNotification(PlusMediator.OPEN, {url:Resource.FriendPath, x:600, y:100});
@@ -62,37 +61,53 @@ function sendFace():void
 	
 }
 
+var loader:URLLoader;
+	var ThePage = 1;
+	var T = 0;
+var pid:int;
+var url:String="http://t1.ss911.cn/User/Friend.ss";
+pid=3140460;
+getFriendList(pid);
 function getFriendList(pid:int):void
 {
-	var loader:URLLoader;
-	loader=new URLLoader();
-	ThePage = 1;
-	T = 0;
-	var url:String="http://t1.ss911.cn/User/Friend.ss";
+
+	
+
+	
 	DebugTools.debugTrace("尝试获取好友信息 id:"+pid,"Friend");
 	loadData(ThePage);
-	function loadData(P:int):void
+
+
+
+}
+	function loadData(p:int):void
 	{
 
 
+loader=new URLLoader();
 		var data:URLVariables = new URLVariables();
 		data.userid = pid;
 		data.u = MainData.LoginInfo.uservalues;
-		data.p = P;
-		data.t = String(T);
+		data.p = p;
+		data.t = T;
+                DebugTools.debugTrace("data.t id:"+pid,"Friend",data);
+
 		var rq:URLRequest = new URLRequest();
-		rq.url = "/User/Friend.ss";
+		rq.url =url;
 		rq.data = data;
 		rq.method = URLRequestMethod.GET;
 		loader.load(rq);
 		loader.addEventListener(Event.COMPLETE, loaded);
+               DebugTools.debugTrace("loadData id:"+pid,"Friend",rq);
 
 	}
 	
 	function loaded(e) : void
 	{
+                 DebugTools.debugTrace("loaded id:"+pid,"Friend");
 		var Rst:Object = JSON.decode(e.target.data);
-		Data = Rst;
+		var Data = Rst;
+DebugTools.debugTrace("loaded id:"+pid,"Friend",Data);
 		if (Data.count)
 		{
 		}
@@ -110,7 +125,7 @@ function getFriendList(pid:int):void
 		if(ThePage<MaxPage)
 		{
 			ThePage++;
-			loadData(MaxPage);
+			loadData(ThePage);
 		}else
 		{
 			loader=null;
@@ -118,4 +133,3 @@ function getFriendList(pid:int):void
 		}
 
 	}
-}

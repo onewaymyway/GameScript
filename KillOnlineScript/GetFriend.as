@@ -79,7 +79,7 @@ function loaded(e) : void
 		MaxPage = Math.ceil(Data.count / 11);
 	}
 	
-	DebugTools.debugTrace("好友 id:"+friendData.pid+" P:"+friendData.ThePage,"Friend",rst);
+	DebugTools.debugTrace("好友 id:"+friendData.pid+" P:"+friendData.ThePage+"/"+MaxPage,"Friend",rst);
 	
 	var friendList:Array;
 	friendList=rst.data;

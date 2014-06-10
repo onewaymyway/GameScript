@@ -1,0 +1,23 @@
+装好了debug版本的flash player插件
+
+ 
+
+mm.cfg配置文件的存放路径：
+
+ 
+
+Windows XP　　C:/Documents and Settings/username
+
+ 
+
+Windows 7　　 C:/Users/username
+
+将PreLoader.swf放在同一目录下
+修改mm.cfg中的文件路径，与实际路径相同
+
+
+用浏览器打开游戏
+进入房间
+点cmds按钮
+复制黏贴脚本到输入文本框
+点cmds运行

@@ -75,12 +75,12 @@ function getFriendList(pid:int):void
 	
 	
 	DebugTools.debugTrace("尝试获取好友信息 id:"+pid,"Friend");
-	loadData(ThePage);
+	loadData(1,pid);
 	
 	
 	
 }
-function loadData(p:int):void
+function loadData(p:int,pid:int):void
 {
 	
 	
@@ -123,10 +123,11 @@ function loaded(e) : void
 	}
 	
 	DebugTools.debugTrace("好友 id:"+pid+" P:"+rst,"Friend",rst);
+	var ThePage:int=Data.p;
 	if(ThePage<MaxPage)
 	{
 		ThePage++;
-		loadData(ThePage);
+		loadData(ThePage,pid);
 	}else
 	{
 		loader=null;

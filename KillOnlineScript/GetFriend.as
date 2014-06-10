@@ -25,6 +25,7 @@ friendData.T="0";
 getFriendList();
 function getFriendList():void
 {	
+	DebugTools.debugTrace("尝试获取好友信息 id:"+friendData.pid,"Friend",friendData);
 	DebugTools.debugTrace("尝试获取好友信息 id:"+friendData.pid,"Friend");
 	loadData();
 	
@@ -78,7 +79,19 @@ function loaded(e) : void
 		MaxPage = Math.ceil(Data.count / 11);
 	}
 	
-	DebugTools.debugTrace("好友 id:"+friendData.pid+" P:"+rst,"Friend",rst);
+	DebugTools.debugTrace("好友 id:"+friendData.pid+" P:"+friendData.ThePage,"Friend",rst);
+	
+	var friendList:Array;
+	friendList=rst.data;
+	var i:int;
+	var len:int;
+	var tFriend:Object;
+	len=friendList.length;
+	for(i=0;i<len;i++)
+	{
+		tFriend=friendList[i];
+		DebugTools.debugTrace(tFriend.userName,"Friend",tFriend);
+	}
 	if(friendData.ThePage<MaxPage)
 	{
 		friendData.ThePage++;
@@ -86,7 +99,7 @@ function loaded(e) : void
 	}else
 	{
 		loader=null;
-		DebugTools.debugTrace("好友结束 id:"+friendData.pid+" P:"+rst,"Friend",rst);
+		DebugTools.debugTrace("好友结束 id:"+friendData.pid+" P:"+friendData.ThePage,"Friend",rst);
 	}
 	
 }

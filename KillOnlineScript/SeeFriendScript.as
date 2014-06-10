@@ -31,10 +31,10 @@ myID=1549754;
 var faced:IFacade;
 faced=Facade.getInstance();
 trace("faced:"+faced);
-var data = new Object();
-data.Msg = "聊天测试啊qqqq";
-data.Color = "";
-data.cmd = "SayInRoom";
+//var data = new Object();
+//data.Msg = "聊天测试啊qqqq";
+//data.Color = "";
+//data.cmd = "SayInRoom";
 //faced.sendNotification(GameEvents.NETEVENT.NETCALL, data);
 //faced.sendNotification(KillerRoomEvents.PLAYERLIST_OPEN);
 DebugTools.debugTrace("myID:"+UserData.UserInfo.UserId,"MSG");
@@ -62,74 +62,78 @@ function sendFace():void
 }
 
 var loader:URLLoader;
-	var ThePage = 1;
-	var T = 0;
+var ThePage:int = 1;
+var T :int= 0;
 var pid:int;
 var url:String="http://t1.ss911.cn/User/Friend.ss";
 pid=3140460;
 getFriendList(pid);
 function getFriendList(pid:int):void
 {
-
 	
-
+	
+	
 	
 	DebugTools.debugTrace("尝试获取好友信息 id:"+pid,"Friend");
 	loadData(ThePage);
-
-
-
+	
+	
+	
 }
-	function loadData(p:int):void
+function loadData(p:int):void
+{
+	
+	
+	loader=new URLLoader();
+	var data:URLVariables = new URLVariables();
+	data.userid = pid;
+	data.u = MainData.LoginInfo.uservalues;
+	data.p = p;
+	data.t = T;
+	DebugTools.debugTrace("data.t id:"+pid,"Friend",data);
+	
+	var rq:URLRequest = new URLRequest();
+	rq.url =url;
+	rq.data = data;
+	rq.method = URLRequestMethod.GET;
+	
+	loader.addEventListener(Event.COMPLETE, loaded);
+	
+	loader.load(rq);
+	
+	DebugTools.debugTrace("loadData id:"+pid,"Friend",rq);
+	
+}
+
+function loaded(e) : void
+{
+	DebugTools.debugTrace("loaded id:"+pid,"Friend");
+	var rst:Object = JSONTools.getJSONObject(e.target.data);
+	var Data:Object= rst;
+	DebugTools.debugTrace("loaded id:"+pid,"Friend",Data);
+	var MaxPage:int;
+	if (Data.count)
 	{
-
-
-loader=new URLLoader();
-		var data:URLVariables = new URLVariables();
-		data.userid = pid;
-		data.u = MainData.LoginInfo.uservalues;
-		data.p = p;
-		data.t = T;
-                DebugTools.debugTrace("data.t id:"+pid,"Friend",data);
-
-		var rq:URLRequest = new URLRequest();
-		rq.url =url;
-		rq.data = data;
-		rq.method = URLRequestMethod.GET;
-		loader.load(rq);
-		loader.addEventListener(Event.COMPLETE, loaded);
-               DebugTools.debugTrace("loadData id:"+pid,"Friend",rq);
-
+	}
+	if (Data.count < 1)
+	{
+		MaxPage = 1;
+		
+	}
+	else
+	{
+		MaxPage = Math.ceil(Data.count / 11);
 	}
 	
-	function loaded(e) : void
+	DebugTools.debugTrace("好友 id:"+pid+" P:"+rst,"Friend",rst);
+	if(ThePage<MaxPage)
 	{
-                 DebugTools.debugTrace("loaded id:"+pid,"Friend");
-		var Rst:Object = JSON.decode(e.target.data);
-		var Data = Rst;
-DebugTools.debugTrace("loaded id:"+pid,"Friend",Data);
-		if (Data.count)
-		{
-		}
-		if (Data.count < 1)
-		{
-			MaxPage = 1;
-			
-		}
-		else
-		{
-			MaxPage = Math.ceil(Data.count / 11);
-		}
-		
-		DebugTools.debugTrace("好友 id:"+pid+" P:"+Rst,"Friend",Rst);
-		if(ThePage<MaxPage)
-		{
-			ThePage++;
-			loadData(ThePage);
-		}else
-		{
-			loader=null;
-			DebugTools.debugTrace("好友结束 id:"+pid+" P:"+Rst,"Friend",Rst);
-		}
-
+		ThePage++;
+		loadData(ThePage);
+	}else
+	{
+		loader=null;
+		DebugTools.debugTrace("好友结束 id:"+pid+" P:"+rst,"Friend",rst);
 	}
+	
+}

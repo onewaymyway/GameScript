@@ -1,4 +1,4 @@
-import com.tools.DebugTools;
+﻿import com.tools.DebugTools;
 import com.tools.JSONTools;
 
 import flash.events.Event;
@@ -16,13 +16,22 @@ var loader:URLLoader;
 var url:String="http://t1.ss911.cn/User/Friend.ss";
 var friendData:Object;
 friendData={};
-friendData.pid=3140460;
+friendData.pid=1835802;
 friendData.ThePage=1;
 friendData.T="0";
 //pid=3140460;
 //ThePage=1;
 //T="0";
+getFriend(1835802);
+function getFriend(pid:int):void
+{
+      friendData={};
+friendData.pid=pid;
+friendData.ThePage=1;
+friendData.T="0";
 getFriendList();
+}
+//getFriendList();
 function getFriendList():void
 {	
 	DebugTools.debugTrace("尝试获取好友信息 id:"+friendData.pid,"Friend",friendData);

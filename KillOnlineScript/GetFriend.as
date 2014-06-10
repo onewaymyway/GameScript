@@ -26,7 +26,7 @@ getFriendList();
 function getFriendList():void
 {	
 	DebugTools.debugTrace("尝试获取好友信息 id:"+friendData.pid,"Friend",friendData);
-	DebugTools.debugTrace("尝试获取好友信息 id:"+friendData.pid,"Friend");
+//	DebugTools.debugTrace("尝试获取好友信息 id:"+friendData.pid,"Friend");
 	loadData();
 	
 	
@@ -55,16 +55,16 @@ function loadData():void
 	
 	loader.load(rq);
 	
-	DebugTools.debugTrace("loadData id:"+friendData.pid,"Friend",rq);
+//	DebugTools.debugTrace("loadData id:"+friendData.pid,"Friend",rq);
 	
 }
 
 function loaded(e) : void
 {
-	DebugTools.debugTrace("loaded id:"+friendData.pid,"Friend");
+//	DebugTools.debugTrace("loaded id:"+friendData.pid,"Friend");
 	var rst:Object = JSONTools.getJSONObject(e.target.data);
 	var Data:Object= rst;
-	DebugTools.debugTrace("loaded id:"+friendData.pid,"Friend",Data);
+//	DebugTools.debugTrace("loaded id:"+friendData.pid,"Friend",Data);
 	var MaxPage:int;
 	if (Data.count)
 	{
@@ -87,10 +87,12 @@ function loaded(e) : void
 	var len:int;
 	var tFriend:Object;
 	len=friendList.length;
+	var stateList:Array;
+	stateList=["离线","在线"];
 	for(i=0;i<len;i++)
 	{
 		tFriend=friendList[i];
-		DebugTools.debugTrace(tFriend.userName,"Friend",tFriend);
+		DebugTools.debugTrace(tFriend.userName+""+stateList[tFriend.online],"Friend",tFriend);
 	}
 	if(friendData.ThePage<MaxPage)
 	{

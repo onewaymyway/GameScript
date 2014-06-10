@@ -160,11 +160,15 @@ function onMsg(msgO:*):void
 	if(tmsg.indexOf("别学我")>=0)
 	{
 		removeCopyID(cmd["UserId"]);
+		sendChat(cmd["UserName"]+"离开复读列表");
 	}else
 	{
 		if(tmsg.indexOf("学我说话")>=0)
 		{
 			addCopyID(cmd["UserId"]);
+			
+			sendChat(cmd["UserName"]+"加入复读列表");
+			return;
 		}
 	}
 	

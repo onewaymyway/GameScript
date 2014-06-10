@@ -69,7 +69,7 @@ function getFriendList(pid:int):void
 	ThePage = 1;
 	T = 0;
 	var url:String="http://t1.ss911.cn/User/Friend.ss";
-	DebugTools.debugTrace("尝试获取好友信息 id:"+pid+" P:"+Rst,"Friend",Rst);
+	DebugTools.debugTrace("尝试获取好友信息 id:"+pid,"Friend");
 	loadData(ThePage);
 	function loadData(P:int):void
 	{

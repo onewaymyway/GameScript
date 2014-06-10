@@ -87,13 +87,18 @@ function loadData(p:int,pid:int):void
 	loader=new URLLoader();
 
 	
-	var url:String="http://t1.ss911.cn/User/Friend.ss?u=usrvar&p=1&t=0&userid=1548710";
-	url="http://t1.ss911.cn/User/Friend.ss?u="+MainData.LoginInfo.uservalues+"&p="+p+"&t=0&userid="+pid+"";
+	var url:String="http://t1.ss911.cn/User/Friend.ss";
+	//url="http://t1.ss911.cn/User/Friend.ss?u="+MainData.LoginInfo.uservalues+"&p="+p+"&t=0&userid="+pid+"";
 	DebugTools.debugTrace("url:"+url,"Friend");
+	var uv:URLVariables=new URLVariables();
+	uv.u=MainData.LoginInfo.uservalues;
+	uv.p=p;
+	uv.userid=pid;
+	uv.t="0";
 	var rq:URLRequest = new URLRequest();
 	rq.url =url;
 	rq.method = URLRequestMethod.GET;
-	
+	rq.data=uv;
 	loader.addEventListener(Event.COMPLETE, loaded);
 	
 	loader.load(rq);

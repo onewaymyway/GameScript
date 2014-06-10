@@ -307,6 +307,12 @@ package com.tg.Tools
 	   {
 		   return str.split(split)[0];
 	   }
+	   public static function getLastValue(str:String,split:String):String
+	   {
+		   var tArr:Array;
+		   tArr=str.split(split);
+		   return tArr.pop();
+	   }
 	   /**
 	    * 向字符串中插入行
 	    * @param str

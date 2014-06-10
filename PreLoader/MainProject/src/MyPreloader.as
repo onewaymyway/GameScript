@@ -182,7 +182,7 @@ package
 			if(mInitialized) return;
 			try
 			{
-				trace("The Miner: SetRoot");
+				trace("The PreLoader: SetRoot");
 				this.mInitialized = true;
 				this.MainSprite = aSprite;
 				

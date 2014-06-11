@@ -35,7 +35,7 @@ var cnt;
 cnt=netP.connection;
 
 trace("connection"+cnt);
-var copyList:Array=[2002671,3106306,3067010];
+var copyList:Array=[];
 function addCopyID(id:int):void
 {
 	var i:int;
@@ -64,7 +64,10 @@ function removeCopyID(id:int):void
 		}
 	}
 }
-
+var isCopyOn:Boolean;
+isCopyOn=false;
+var isTalkOn:Boolean;
+isTalkOn=false;
 var actionDic:Object={};
 var ttList:Array=["算命","缘","姻","蛋","算","胸","美","情"];
 actionDic["算命"]=["不是美女不给算","心不诚不算","胸不大不算","没有眼缘不给算"];
@@ -91,6 +94,10 @@ function getRandomItem(arr:Array):*
 function talkTo(msg:String):void
 {
 	if(!msg)
+	{
+		return;
+	}
+	if(!isTalkOn)
 	{
 		return;
 	}
@@ -133,8 +140,8 @@ function onMsg(msgO:*):void
 	cmd = responseParams.toObject();
 	trace("cmd"+cmd);
 	trace("responseParams)"+responseParams);
-	DebugTools.debugTrace(JSONTools.getJSONString(cmd),"MSG",cmd);
-	
+	DebugTools.debugTrace(msgO.params.cmd+"\n"+JSONTools.getJSONString(cmd),"MSG",cmd);
+	//DebugTools.debugTrace("msgO.params","MSG",msgO.params);
 	if(cmd["UserId"]==UserData.UserInfo.UserId)
 	{
 		return;
@@ -157,32 +164,41 @@ function onMsg(msgO:*):void
 	{
 		return;
 	}
-	if(tmsg.indexOf("别学我")>=0)
+	
+	if(isCopyOn)
 	{
-		removeCopyID(cmd["UserId"]);
-		sendChat(cmd["UserName"]+"离开复读列表");
-	}else
-	{
-		if(tmsg.indexOf("学我说话")>=0)
+		if(tmsg.indexOf("别学我")>=0)
 		{
-			addCopyID(cmd["UserId"]);
-			
-			sendChat(cmd["UserName"]+"加入复读列表");
-			return;
+			removeCopyID(cmd["UserId"]);
+			sendChat(cmd["UserName"]+"离开复读列表");
+		}else
+		{
+			if(tmsg.indexOf("学我说话")>=0)
+			{
+				addCopyID(cmd["UserId"]);
+				
+				sendChat(cmd["UserName"]+"加入复读列表");
+				return;
+			}
 		}
 	}
+
 	
 	var i:int;
 	var len:int;
 	len=copyList.length;
-	for(i=0;i<len;i++)
+	if(isCopyOn)
 	{
-		if(cmd["UserId"]==copyList[i])
+		for(i=0;i<len;i++)
 		{
-			sendChat(cmd["Msg"]);
-			return;
+			if(cmd["UserId"]==copyList[i])
+			{
+				sendChat(cmd["Msg"]);
+				return;
+			}
 		}
 	}
+
 	
 	talkTo(cmd["Msg"]);
 	//if(cmd["UserId"]==2002671||cmd["UserId"]==3106306||3067010==cmd["UserId"])

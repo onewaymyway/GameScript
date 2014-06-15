@@ -9,9 +9,15 @@ import Core.view.PlusMediator;
 import com.smartfoxserver.v2.SmartFox;
 import com.smartfoxserver.v2.core.SFSEvent;
 import com.smartfoxserver.v2.entities.data.SFSObject;
+import com.tg.Tools.TimeTools;
 import com.tools.DebugTools;
 import com.tools.JSONTools;
 
+import flash.events.Event;
+import flash.net.URLLoader;
+import flash.net.URLRequest;
+import flash.net.URLRequestMethod;
+import flash.net.URLVariables;
 import flash.utils.Dictionary;
 
 import org.puremvc.as3.interfaces.IFacade;
@@ -130,6 +136,21 @@ function talkTo(msg:String):void
 }
 cnt.addEventListener(SFSEvent.EXTENSION_RESPONSE, onMsg);
 
+var reportTypeList:Array=["Speaker","SystemMsg"];
+function isReportType(type:String):Boolean
+{
+	var i:int;
+	var len:int;
+	len=reportTypeList.length;
+	for(i=0;i<len;i++)
+	{
+		if(type.indexOf(reportTypeList[i])>=0)
+		{
+			return true;
+		}
+	}
+	return false;
+}
 function onMsg(msgO:*):void
 {
 	trace("get message:"+msgO);
@@ -140,8 +161,18 @@ function onMsg(msgO:*):void
 	cmd = responseParams.toObject();
 	trace("cmd"+cmd);
 	trace("responseParams)"+responseParams);
+	var type:String;
+	type=msgO.params.cmd;
 	DebugTools.debugTrace(msgO.params.cmd+"\n"+JSONTools.getJSONString(cmd),"MSG",cmd);
 	//DebugTools.debugTrace("msgO.params","MSG",msgO.params);
+	//DebugTools.debugTrace("type:"+type.indexOf("Speaker")>=0,"types",msgO.params);
+	//DebugTools.debugTrace("type:"+type+":"+type.length,"types",msgO.params);
+	
+	if(isReportType(type))
+	{
+		dealSpeaker(cmd);
+	}
+
 	if(cmd["UserId"]==UserData.UserInfo.UserId)
 	{
 		return;
@@ -216,5 +247,44 @@ function sendChat(msg:String):void
 	
 }
 
+var speakList:Array=[];
+function dealSpeaker(msg:Object):void
+{
+	//DebugTools.debugTrace("喇叭数据："+speakList.length,"Report");
+	msg.time=TimeTools.getTimeNow();
+	speakList.push(msg);
+	DebugTools.debugTrace("喇叭数据："+speakList.length,"Report");
+	if(speakList.length>10)
+	{
+		reportSpeakesToSever();
+	}
+}
+var loader:URLLoader;
+function reportSpeakesToSever():void
+{
+	loader=new URLLoader();
+	
+	
+	var url:String="http://sogasoga.sinaapp.com/killOnline/getcontent.php";
+	//url="http://t1.ss911.cn/User/Friend.ss?u="+MainData.LoginInfo.uservalues+"&p="+p+"&t=0&userid="+pid+"";
+	DebugTools.debugTrace("上传喇叭数据","Report");
+	var uv:URLVariables=new URLVariables();
+	uv.action="put";
+	uv.content=JSONTools.getJSONString(speakList);
+	uv.type="speaks";
+	speakList=[];
+	var rq:URLRequest = new URLRequest();
+	rq.url =url;
+	rq.method = URLRequestMethod.GET;
+	rq.data=uv;
+	loader.addEventListener(Event.COMPLETE, reportResult);
+	
+	loader.load(rq);
+	
+}
 
+function reportResult(e):void
+{
+	DebugTools.debugTrace("上传喇叭数据成功","Report");
+}
 trace("import success");

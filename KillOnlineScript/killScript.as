@@ -15,7 +15,6 @@ import flash.net.URLRequestMethod;
 import flash.net.URLVariables;
 import flash.utils.Dictionary;
 
-import Core;
 
 import Core.GameEvents;
 import Core.Resource;

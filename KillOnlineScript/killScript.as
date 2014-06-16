@@ -263,7 +263,7 @@ function sendChat(msg:String):void
 	
 }
 
-var speakList:Array=[];
+//var speakList:Array=[];
 function dealSpeaker(msg:Object):void
 {
 	//DebugTools.debugTrace("喇叭数据："+speakList.length,"Report");
@@ -290,7 +290,7 @@ function reportSpeakesToSever(type:String,data:Array):void
 	DebugTools.debugTrace("上传喇叭数据","Report");
 	var uv:URLVariables=new URLVariables();
 	uv.action="put";
-	uv.content=JSONTools.getJSONString(speakList);
+	uv.content=JSONTools.getJSONString(data);
 	uv.type=type;
 	data.splice(0,data.length);;
 	var rq:URLRequest = new URLRequest();

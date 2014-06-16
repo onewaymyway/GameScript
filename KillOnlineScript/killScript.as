@@ -1,4 +1,12 @@
-﻿import com.smartfoxserver.v2.SmartFox;
+﻿import Core;
+import Core.GameEvents;
+import Core.Resource;
+import Core.model.NetProxy;
+import Core.model.data.MainData;
+import Core.model.data.UserData;
+import Core.view.PlusMediator;
+
+import com.smartfoxserver.v2.SmartFox;
 import com.smartfoxserver.v2.core.SFSEvent;
 import com.smartfoxserver.v2.entities.data.SFSObject;
 import com.tg.Tools.TimeTools;
@@ -6,20 +14,13 @@ import com.tools.DebugTools;
 import com.tools.JSONTools;
 
 import flash.events.Event;
+import flash.events.IOErrorEvent;
+import flash.events.SecurityErrorEvent;
 import flash.net.URLLoader;
 import flash.net.URLRequest;
 import flash.net.URLRequestMethod;
 import flash.net.URLVariables;
 import flash.utils.Dictionary;
-
-import Core;
-
-import Core.GameEvents;
-import Core.Resource;
-import Core.model.NetProxy;
-import Core.model.data.MainData;
-import Core.model.data.UserData;
-import Core.view.PlusMediator;
 
 import org.puremvc.as3.interfaces.IFacade;
 import org.puremvc.as3.patterns.facade.Facade;
@@ -138,6 +139,7 @@ function talkTo(msg:String):void
 cnt.addEventListener(SFSEvent.EXTENSION_RESPONSE, onMsg);
 
 var reportTypeList:Array=["Speaker","SystemMsg","HallMsg"];
+//reportTypeList=["Speaker","SystemMsg"];
 var msgDic:Object={};
 function getMsgListByType(type:String):Array
 {
@@ -185,8 +187,8 @@ function onMsg(msgO:*):void
 	
 	if(isReportType(type))
 	{
-		cmd.mType=isReportType(type);
-		dealSpeaker(cmd);
+//		cmd.mType=isReportType(type);
+		dealSpeaker(cmd,isReportType(type));
 	}
 
 	if(cmd["UserId"]==UserData.UserInfo.UserId)
@@ -264,17 +266,15 @@ function sendChat(msg:String):void
 }
 
 //var speakList:Array=[];
-function dealSpeaker(msg:Object):void
+function dealSpeaker(msg:Object,type:String):void
 {
-	//DebugTools.debugTrace("喇叭数据："+speakList.length,"Report");
+	//DebugTools.debugTrace("收集数据："+speakList.length,"Report");
 	msg.time=TimeTools.getTimeNow();
-	var type:String;
-	type=msg.mType;
 	var tList:Array;
 	tList=getMsgListByType(type);
 	tList.push(msg);
-	DebugTools.debugTrace("喇叭数据"+type+"："+tList.length,"Report");
-	if(tList.length>10)
+	DebugTools.debugTrace("收集数据"+type+"："+tList.length,"Report");
+	if(tList.length>=2)
 	{
 		reportSpeakesToSever(type,tList);
 	}
@@ -287,24 +287,36 @@ function reportSpeakesToSever(type:String,data:Array):void
 	
 	var url:String="http://sogasoga.sinaapp.com/killOnline/getcontent.php";
 	//url="http://t1.ss911.cn/User/Friend.ss?u="+MainData.LoginInfo.uservalues+"&p="+p+"&t=0&userid="+pid+"";
-	DebugTools.debugTrace("上传喇叭数据:"+type,"Report",data);
+	var dataStr:String;
+	dataStr=JSONTools.getJSONString(data);
+	data.splice(0,data.length);
+	DebugTools.debugTrace("上传收集数据:"+type+"\n"+dataStr,"Report",data);
 	var uv:URLVariables=new URLVariables();
 	uv.action="put";
-	uv.content=JSONTools.getJSONString(data);
+	uv.content=dataStr;
 	uv.type=type;
-	data.splice(0,data.length);
+	
 	var rq:URLRequest = new URLRequest();
 	rq.url =url;
 	rq.method = URLRequestMethod.GET;
 	rq.data=uv;
+	
 	loader.addEventListener(Event.COMPLETE, reportResult);
-	
+	loader.addEventListener(SecurityErrorEvent.SECURITY_ERROR,securityErro);
+	loader.addEventListener(IOErrorEvent.IO_ERROR,ioErro);
 	loader.load(rq);
-	
+	DebugTools.debugTrace("上传喇叭end","Report");
 }
-
+function securityErro(e:Event):void
+{
+	DebugTools.debugTrace("上传收集数据失败 securityErro","Report");
+}
+function ioErro(e:Event):void
+{
+	DebugTools.debugTrace("上传收集数据失败 ioErro","Report");
+}
 function reportResult(e):void
 {
-	DebugTools.debugTrace("上传喇叭数据成功","Report");
+	DebugTools.debugTrace("上传收集数据成功:"+JSONTools.getJSONObject(e.target.data),"Report");
 }
-trace("import success");
+DebugTools.debugTrace("run success","CMDS");

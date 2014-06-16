@@ -87,6 +87,12 @@ package com.tg.Tools
 			d.time=sec*1000;
 			return d.hours+":"+d.minutes;
 		}
+		public static function getTimeStamp(time:Number):String
+		{
+			var d:Date=new Date;
+			d.time=time;
+			return d.fullYear+"-"+(d.month+1)+"-"+d.date+" "+d.hours+":"+d.minutes;
+		}
 		/**
 		 * 获取当天剩余的秒数
 		 * @return 

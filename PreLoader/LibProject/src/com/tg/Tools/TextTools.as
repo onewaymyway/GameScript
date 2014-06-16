@@ -193,5 +193,24 @@ package com.tg.Tools
 			
 			return rst;
 		}
+		
+		
+		public static function getATextField(width:Number,height:Number):TextField
+		{
+			//调试输出文本
+			var rst:TextField;
+			rst=new TextField;
+			rst.y=0;
+			rst.width=width;
+			rst.height=height;
+			rst.multiline=true;
+			rst.wordWrap=true;
+			rst.textColor=0xFFFF00;
+			rst.background=true;
+			rst.backgroundColor=0x000000;
+			rst.selectable=true;
+			
+			return rst;
+		}
 	}
 }

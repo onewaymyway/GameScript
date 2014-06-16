@@ -287,7 +287,7 @@ function reportSpeakesToSever(type:String,data:Array):void
 	
 	var url:String="http://sogasoga.sinaapp.com/killOnline/getcontent.php";
 	//url="http://t1.ss911.cn/User/Friend.ss?u="+MainData.LoginInfo.uservalues+"&p="+p+"&t=0&userid="+pid+"";
-	DebugTools.debugTrace("上传喇叭数据","Report");
+	DebugTools.debugTrace("上传喇叭数据:"+type,"Report",data);
 	var uv:URLVariables=new URLVariables();
 	uv.action="put";
 	uv.content=JSONTools.getJSONString(data);

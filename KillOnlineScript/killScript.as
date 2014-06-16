@@ -1,4 +1,11 @@
-﻿import com.smartfoxserver.v2.SmartFox;
+﻿import Core.GameEvents;
+import Core.Resource;
+import Core.model.NetProxy;
+import Core.model.data.MainData;
+import Core.model.data.UserData;
+import Core.view.PlusMediator;
+
+import com.smartfoxserver.v2.SmartFox;
 import com.smartfoxserver.v2.core.SFSEvent;
 import com.smartfoxserver.v2.entities.data.SFSObject;
 import com.tg.Tools.TextTools;
@@ -14,14 +21,6 @@ import flash.net.URLRequest;
 import flash.net.URLRequestMethod;
 import flash.net.URLVariables;
 import flash.utils.Dictionary;
-
-
-import Core.GameEvents;
-import Core.Resource;
-import Core.model.NetProxy;
-import Core.model.data.MainData;
-import Core.model.data.UserData;
-import Core.view.PlusMediator;
 
 import org.puremvc.as3.interfaces.IFacade;
 import org.puremvc.as3.patterns.facade.Facade;
@@ -271,6 +270,7 @@ function dealSpeaker(msg:Object,type:String):void
 {
 	//DebugTools.debugTrace("收集数据："+speakList.length,"Report");
 	msg.time=TimeTools.getTimeNow();
+	JSONTools.adaptForJSON(msg);
 	var tList:Array;
 	tList=getMsgListByType(type);
 	tList.push(msg);

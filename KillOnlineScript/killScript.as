@@ -137,7 +137,21 @@ function talkTo(msg:String):void
 }
 cnt.addEventListener(SFSEvent.EXTENSION_RESPONSE, onMsg);
 
-var reportTypeList:Array=["Speaker","SystemMsg"];
+var reportTypeList:Array=["Speaker","SystemMsg","HallMsg"];
+var msgDic:Object={};
+function getMsgListByType(type:String):Array
+{
+	var rst:Array;
+	if(msgDic[type])
+	{
+		rst=msgDic[type];
+	}else
+	{
+		rst=[];
+		msgDic[type]=rst;
+	}
+	return rst;
+}
 function isReportType(type:String):String
 {
 	var i:int;
@@ -254,15 +268,19 @@ function dealSpeaker(msg:Object):void
 {
 	//DebugTools.debugTrace("喇叭数据："+speakList.length,"Report");
 	msg.time=TimeTools.getTimeNow();
-	speakList.push(msg);
-	DebugTools.debugTrace("喇叭数据："+speakList.length,"Report");
-	if(speakList.length>10)
+	var type:String;
+	type=msg.mType;
+	var tList:Array;
+	tList=getMsgListByType(type);
+	tList.push(msg);
+	DebugTools.debugTrace("喇叭数据"+type+"："+tList.length,"Report");
+	if(tList.length>10)
 	{
-		reportSpeakesToSever();
+		reportSpeakesToSever(type,tList);
 	}
 }
 var loader:URLLoader;
-function reportSpeakesToSever():void
+function reportSpeakesToSever(type:String,data:Array):void
 {
 	loader=new URLLoader();
 	
@@ -273,8 +291,8 @@ function reportSpeakesToSever():void
 	var uv:URLVariables=new URLVariables();
 	uv.action="put";
 	uv.content=JSONTools.getJSONString(speakList);
-	uv.type="speaks";
-	speakList=[];
+	uv.type=type;
+	data.splice(0,data.length);;
 	var rq:URLRequest = new URLRequest();
 	rq.url =url;
 	rq.method = URLRequestMethod.GET;

@@ -1,11 +1,3 @@
-import Core;
-import Core.GameEvents;
-import Core.Resource;
-import Core.model.NetProxy;
-import Core.model.data.MainData;
-import Core.model.data.UserData;
-import Core.view.PlusMediator;
-
 import com.smartfoxserver.v2.SmartFox;
 import com.smartfoxserver.v2.core.SFSEvent;
 import com.smartfoxserver.v2.entities.data.SFSObject;
@@ -19,6 +11,15 @@ import flash.net.URLRequest;
 import flash.net.URLRequestMethod;
 import flash.net.URLVariables;
 import flash.utils.Dictionary;
+
+import Core;
+
+import Core.GameEvents;
+import Core.Resource;
+import Core.model.NetProxy;
+import Core.model.data.MainData;
+import Core.model.data.UserData;
+import Core.view.PlusMediator;
 
 import org.puremvc.as3.interfaces.IFacade;
 import org.puremvc.as3.patterns.facade.Facade;
@@ -137,7 +138,7 @@ function talkTo(msg:String):void
 cnt.addEventListener(SFSEvent.EXTENSION_RESPONSE, onMsg);
 
 var reportTypeList:Array=["Speaker","SystemMsg"];
-function isReportType(type:String):Boolean
+function isReportType(type:String):String
 {
 	var i:int;
 	var len:int;
@@ -146,10 +147,10 @@ function isReportType(type:String):Boolean
 	{
 		if(type.indexOf(reportTypeList[i])>=0)
 		{
-			return true;
+			return reportTypeList[i];
 		}
 	}
-	return false;
+	return null;
 }
 function onMsg(msgO:*):void
 {
@@ -170,6 +171,7 @@ function onMsg(msgO:*):void
 	
 	if(isReportType(type))
 	{
+		cmd.mType=isReportType(type);
 		dealSpeaker(cmd);
 	}
 

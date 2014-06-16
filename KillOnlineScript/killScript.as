@@ -1,4 +1,4 @@
-import com.smartfoxserver.v2.SmartFox;
+﻿import com.smartfoxserver.v2.SmartFox;
 import com.smartfoxserver.v2.core.SFSEvent;
 import com.smartfoxserver.v2.entities.data.SFSObject;
 import com.tg.Tools.TimeTools;
@@ -292,7 +292,7 @@ function reportSpeakesToSever(type:String,data:Array):void
 	uv.action="put";
 	uv.content=JSONTools.getJSONString(data);
 	uv.type=type;
-	data.splice(0,data.length);;
+	data.splice(0,data.length);
 	var rq:URLRequest = new URLRequest();
 	rq.url =url;
 	rq.method = URLRequestMethod.GET;

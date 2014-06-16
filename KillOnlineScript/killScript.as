@@ -1,14 +1,7 @@
-﻿import Core;
-import Core.GameEvents;
-import Core.Resource;
-import Core.model.NetProxy;
-import Core.model.data.MainData;
-import Core.model.data.UserData;
-import Core.view.PlusMediator;
-
-import com.smartfoxserver.v2.SmartFox;
+﻿import com.smartfoxserver.v2.SmartFox;
 import com.smartfoxserver.v2.core.SFSEvent;
 import com.smartfoxserver.v2.entities.data.SFSObject;
+import com.tg.Tools.TextTools;
 import com.tg.Tools.TimeTools;
 import com.tools.DebugTools;
 import com.tools.JSONTools;
@@ -21,6 +14,15 @@ import flash.net.URLRequest;
 import flash.net.URLRequestMethod;
 import flash.net.URLVariables;
 import flash.utils.Dictionary;
+
+import Core;
+
+import Core.GameEvents;
+import Core.Resource;
+import Core.model.NetProxy;
+import Core.model.data.MainData;
+import Core.model.data.UserData;
+import Core.view.PlusMediator;
 
 import org.puremvc.as3.interfaces.IFacade;
 import org.puremvc.as3.patterns.facade.Facade;
@@ -274,21 +276,26 @@ function dealSpeaker(msg:Object,type:String):void
 	tList=getMsgListByType(type);
 	tList.push(msg);
 	DebugTools.debugTrace("收集数据"+type+"："+tList.length,"Report");
-	if(tList.length>=2)
+	if(tList.length>=10)
 	{
 		reportSpeakesToSever(type,tList);
 	}
 }
 var loader:URLLoader;
+loader=new URLLoader();
+loader.addEventListener(Event.COMPLETE, reportResult);
+loader.addEventListener(SecurityErrorEvent.SECURITY_ERROR,securityErro);
+loader.addEventListener(IOErrorEvent.IO_ERROR,ioErro);
 function reportSpeakesToSever(type:String,data:Array):void
 {
-	loader=new URLLoader();
+	
 	
 	
 	var url:String="http://sogasoga.sinaapp.com/killOnline/getcontent.php";
 	//url="http://t1.ss911.cn/User/Friend.ss?u="+MainData.LoginInfo.uservalues+"&p="+p+"&t=0&userid="+pid+"";
 	var dataStr:String;
 	dataStr=JSONTools.getJSONString(data);
+	dataStr=TextTools.getPlainText(dataStr);
 	data.splice(0,data.length);
 	DebugTools.debugTrace("上传收集数据:"+type+"\n"+dataStr,"Report",data);
 	var uv:URLVariables=new URLVariables();
@@ -301,9 +308,7 @@ function reportSpeakesToSever(type:String,data:Array):void
 	rq.method = URLRequestMethod.GET;
 	rq.data=uv;
 	
-	loader.addEventListener(Event.COMPLETE, reportResult);
-	loader.addEventListener(SecurityErrorEvent.SECURITY_ERROR,securityErro);
-	loader.addEventListener(IOErrorEvent.IO_ERROR,ioErro);
+
 	loader.load(rq);
 	DebugTools.debugTrace("上传喇叭end","Report");
 }

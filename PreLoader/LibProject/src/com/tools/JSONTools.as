@@ -1,9 +1,9 @@
 package com.tools
 {
-	import com.adobe.serialization.json.JSON;
+	//import com.adobe.serialization.json.JSON;
 	import com.tg.Tools.StringToolsLib;
 	
-	import flash.globalization.StringTools;
+	//import flash.globalization.StringTools;
 
 	public class JSONTools
 	{
@@ -36,7 +36,7 @@ package com.tools
 		 */
 		public static function getJSONString(obj:Object):String
 		{
-			return com.adobe.serialization.json.JSON.encode(obj);
+			return JSON.stringify(obj);
 		}
 		
 		/**
@@ -47,7 +47,7 @@ package com.tools
 		 */
 		public static function getJSONObject(jsonString:String):Object
 		{
-			return com.adobe.serialization.json.JSON.decode(jsonString,false);
+			return JSON.parse(jsonString);
 		}
 	}
 }0

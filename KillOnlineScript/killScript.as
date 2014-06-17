@@ -188,7 +188,7 @@ function onMsg(msgO:*):void
 	if(isReportType(type))
 	{
 //		cmd.mType=isReportType(type);
-		dealSpeaker(cmd,isReportType(type));
+		//dealSpeaker(cmd,isReportType(type));
 	}
 
 	if(cmd["UserId"]==UserData.UserInfo.UserId)

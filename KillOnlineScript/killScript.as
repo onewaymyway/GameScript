@@ -1,11 +1,4 @@
-﻿import Core.GameEvents;
-import Core.Resource;
-import Core.model.NetProxy;
-import Core.model.data.MainData;
-import Core.model.data.UserData;
-import Core.view.PlusMediator;
-
-import com.smartfoxserver.v2.SmartFox;
+﻿import com.smartfoxserver.v2.SmartFox;
 import com.smartfoxserver.v2.core.SFSEvent;
 import com.smartfoxserver.v2.entities.data.SFSObject;
 import com.tg.Tools.TextTools;
@@ -21,6 +14,13 @@ import flash.net.URLRequest;
 import flash.net.URLRequestMethod;
 import flash.net.URLVariables;
 import flash.utils.Dictionary;
+
+import Core.GameEvents;
+import Core.Resource;
+import Core.model.NetProxy;
+import Core.model.data.MainData;
+import Core.model.data.UserData;
+import Core.view.PlusMediator;
 
 import org.puremvc.as3.interfaces.IFacade;
 import org.puremvc.as3.patterns.facade.Facade;
@@ -98,7 +98,31 @@ function getRandomItem(arr:Array):*
 	DebugTools.debugTrace("talk:"+rst+" i:"+i,"Talk",arr);
 	return rst;
 }
+//checkInfo(2823053);
+function checkInfo(uid:int):void
+{
+	faced.sendNotification(GameEvents.PlUSEVENT.USERINFOBOXSHOW, uid);
+}
+//getUInfoData(2823053);
+function getUInfoData(uid:int):void
+{
+	var data:Object;
+	data={};
+	data.UserId = uid+"";
+	data.cmd = "PlayerInfo";
+	faced.sendNotification(GameEvents.NETCALL, data);
+}
 
+function freshWeb():void
+{
+	faced.sendNotification(GameEvents.REFRESH_WEB);
+	
+}
+
+function tryLogin():void
+{
+	faced.sendNotification(GameEvents.LOGINEVENT.LOGIN);
+}
 function talkTo(msg:String):void
 {
 	if(!msg)
@@ -180,7 +204,7 @@ function onMsg(msgO:*):void
 	trace("responseParams)"+responseParams);
 	var type:String;
 	type=msgO.params.cmd;
-	DebugTools.debugTrace(msgO.params.cmd+"\n"+JSONTools.getJSONString(cmd),"MSG",cmd);
+	DebugTools.debugTrace(msgO.params.cmd+"\n"+JSONTools.getJSONString(cmd),msgO.params.cmd,cmd);
 	//DebugTools.debugTrace("msgO.params","MSG",msgO.params);
 	//DebugTools.debugTrace("type:"+type.indexOf("Speaker")>=0,"types",msgO.params);
 	//DebugTools.debugTrace("type:"+type+":"+type.length,"types",msgO.params);
@@ -188,7 +212,7 @@ function onMsg(msgO:*):void
 	if(isReportType(type))
 	{
 //		cmd.mType=isReportType(type);
-		//dealSpeaker(cmd,isReportType(type));
+		dealSpeaker(cmd,isReportType(type));
 	}
 
 	if(cmd["UserId"]==UserData.UserInfo.UserId)

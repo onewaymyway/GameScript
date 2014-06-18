@@ -1,6 +1,14 @@
-﻿import com.smartfoxserver.v2.SmartFox;
+﻿import Core.GameEvents;
+import Core.Resource;
+import Core.model.NetProxy;
+import Core.model.data.MainData;
+import Core.model.data.UserData;
+import Core.view.PlusMediator;
+
+import com.smartfoxserver.v2.SmartFox;
 import com.smartfoxserver.v2.core.SFSEvent;
 import com.smartfoxserver.v2.entities.data.SFSObject;
+import com.tg.Tools.StringToolsLib;
 import com.tg.Tools.TextTools;
 import com.tg.Tools.TimeTools;
 import com.tools.DebugTools;
@@ -15,13 +23,6 @@ import flash.net.URLRequestMethod;
 import flash.net.URLVariables;
 import flash.utils.Dictionary;
 import flash.utils.setTimeout;
-
-import Core.GameEvents;
-import Core.Resource;
-import Core.model.NetProxy;
-import Core.model.data.MainData;
-import Core.model.data.UserData;
-import Core.view.PlusMediator;
 
 import org.puremvc.as3.interfaces.IFacade;
 import org.puremvc.as3.patterns.facade.Facade;
@@ -44,10 +45,19 @@ var cnt;
 cnt=netP.connection;
 cnt.addEventListener(SFSEvent.CONNECTION_RESUME,onConnectionLost);
 cnt.addEventListener(SFSEvent.CONNECTION_LOST, onConnectionLost);
+
+var waitTime:int;
+waitTime=60*1000;
 function onConnectionLost(event:SFSEvent) : void
 {
-	DebugTools.debugTrace("连接断开，20秒后重新连接","LoseConnect");
-	setTimeout(tryLogin,20*1000);
+	DebugTools.debugTrace("连接断开，"+waitTime+"ms后重新连接："+StringToolsLib.getDateTxt(TimeTools.getTimeNow()),"LoseConnect");
+	setTimeout(tryLogin,waitTime);
+}
+function tryLogin():void
+{
+	faced.sendNotification(GameEvents.LOGINEVENT.LOGIN);
+	
+	DebugTools.debugTrace("重连","LoseConnect");
 }
 trace("connection"+cnt);
 var copyList:Array=[];
@@ -126,10 +136,7 @@ function freshWeb():void
 	
 }
 
-function tryLogin():void
-{
-	faced.sendNotification(GameEvents.LOGINEVENT.LOGIN);
-}
+
 function talkTo(msg:String):void
 {
 	if(!msg)
@@ -219,7 +226,7 @@ function onMsg(msgO:*):void
 	if(isReportType(type))
 	{
 //		cmd.mType=isReportType(type);
-		dealSpeaker(cmd,isReportType(type));
+		//dealSpeaker(cmd,isReportType(type));
 	}
 
 	if(cmd["UserId"]==UserData.UserInfo.UserId)

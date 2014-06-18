@@ -22,6 +22,7 @@ import flash.net.URLRequest;
 import flash.net.URLRequestMethod;
 import flash.net.URLVariables;
 import flash.utils.Dictionary;
+import flash.utils.clearTimeout;
 import flash.utils.setTimeout;
 
 import org.puremvc.as3.interfaces.IFacade;
@@ -49,20 +50,29 @@ cnt.addEventListener(SFSEvent.CONNECTION_LOST, onConnectionLost);
 var waitTime:int;
 waitTime=60*1000;
 
-var isMyConnect:Boolean;
-isMyConnect=false;
+function updateState():void
+{
+	if(timeConnect>0)
+	{
+	   clearTimeout(timeConnect);
+	   timeConnect=-1;
+	   DebugTools.debugTrace("清除重连","断线类型");
+	}else
+	{
+		
+	}
+}
+
+
+
+var timeConnect:Number=-1;
+
 function onConnectionLost(event:SFSEvent) : void
 {
-	if(isMyConnect)
-	{
-		DebugTools.debugTrace("isMyConnect","断线类型");
-		isMyConnect=false;
-		return;
-	}
 	DebugTools.debugTrace(event.type,"断线类型");
 	DebugTools.debugTrace("连接断开，"+waitTime+"ms后重新连接："+StringToolsLib.getTimeStamp(TimeTools.getTimeNow()),"LoseConnect");
-	isMyConnect=true;
-	setTimeout(tryLogin,waitTime);
+	
+	timeConnect=setTimeout(tryLogin,waitTime);
 }
 function tryLogin():void
 {
@@ -236,6 +246,8 @@ function onMsg(msgO:*):void
 	
 	if(isReportType(type))
 	{
+		
+		updateState();
 //		cmd.mType=isReportType(type);
 		//dealSpeaker(cmd,isReportType(type));
 	}

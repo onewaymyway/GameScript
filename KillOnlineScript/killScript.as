@@ -48,9 +48,20 @@ cnt.addEventListener(SFSEvent.CONNECTION_LOST, onConnectionLost);
 
 var waitTime:int;
 waitTime=60*1000;
+
+var isMyConnect:Boolean;
+isMyConnect=false;
 function onConnectionLost(event:SFSEvent) : void
 {
-	DebugTools.debugTrace("连接断开，"+waitTime+"ms后重新连接："+StringToolsLib.getDateTxt(TimeTools.getTimeNow()),"LoseConnect");
+	if(isMyConnect)
+	{
+		DebugTools.debugTrace("isMyConnect","断线类型");
+		isMyConnect=false;
+		return;
+	}
+	DebugTools.debugTrace(event.type,"断线类型");
+	DebugTools.debugTrace("连接断开，"+waitTime+"ms后重新连接："+StringToolsLib.getTimeStamp(TimeTools.getTimeNow()),"LoseConnect");
+	isMyConnect=true;
 	setTimeout(tryLogin,waitTime);
 }
 function tryLogin():void

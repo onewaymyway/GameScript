@@ -46,7 +46,8 @@ cnt.addEventListener(SFSEvent.CONNECTION_RESUME,onConnectionLost);
 cnt.addEventListener(SFSEvent.CONNECTION_LOST, onConnectionLost);
 function onConnectionLost(event:SFSEvent) : void
 {
-	setTimeout(tryLogin,10*1000);
+	DebugTools.debugTrace("连接断开，20秒后重新连接","LoseConnect");
+	setTimeout(tryLogin,20*1000);
 }
 trace("connection"+cnt);
 var copyList:Array=[];

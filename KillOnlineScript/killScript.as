@@ -14,6 +14,7 @@ import flash.net.URLRequest;
 import flash.net.URLRequestMethod;
 import flash.net.URLVariables;
 import flash.utils.Dictionary;
+import flash.utils.setTimeout;
 
 import Core.GameEvents;
 import Core.Resource;
@@ -41,7 +42,12 @@ trace("netp"+netP);
 
 var cnt;
 cnt=netP.connection;
-
+cnt.addEventListener(SFSEvent.CONNECTION_RESUME,onConnectionLost);
+cnt.addEventListener(SFSEvent.CONNECTION_LOST, onConnectionLost);
+function onConnectionLost(event:SFSEvent) : void
+{
+	setTimeout(tryLogin,10*1000);
+}
 trace("connection"+cnt);
 var copyList:Array=[];
 function addCopyID(id:int):void

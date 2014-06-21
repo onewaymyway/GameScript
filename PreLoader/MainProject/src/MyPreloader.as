@@ -38,6 +38,7 @@ package
 		{
 			ScriptAdapter.exeCmdsFun=Script.execute;
 			ScriptAdapter.initFun=Script.init;
+			ScriptAdapter.loadClassFun=Script.LoadFromString;
 			Security.allowDomain("*");
 			addEventListener(Event.ADDED_TO_STAGE, this.init);
 		}

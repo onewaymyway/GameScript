@@ -249,7 +249,7 @@ function onMsg(msgO:*):void
 		
 		updateState();
 //		cmd.mType=isReportType(type);
-		//dealSpeaker(cmd,isReportType(type));
+		dealSpeaker(cmd,isReportType(type));
 	}
 
 	if(cmd["UserId"]==UserData.UserInfo.UserId)

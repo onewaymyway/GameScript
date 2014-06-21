@@ -1,0 +1,52 @@
+﻿<projectDescription>
+	<id>1238637846607</id>
+	<name>~KillerRoom[1]</name>
+	<asVersion>0</asVersion>
+	<boundTemplate>file:///C|/Users/tangouser/AppData/Local/Adobe/Flash CS4/en/Configuration/Project/templates/boundClass_as3.as</boundTemplate>
+	<classTemplate>file:///C|/Users/tangouser/AppData/Local/Adobe/Flash CS4/en/Configuration/Project/templates/standardClass_as3.as</classTemplate>
+	<classPath>.</classPath>
+	<rootURI>C:\Users\TANGOU~1\AppData\Local\Temp\4</rootURI>
+	<flexSDK/>
+	<sources editable="false"/>
+	<libraries editable="false"/>
+	<externalLibraries editable="false"/>
+	<compileList editable="false">
+		<uri label="~KillerRoom[1].fla">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/~KillerRoom[1].fla</uri>
+	</compileList>
+	<defaultApp>file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/~KillerRoom[1].fla</defaultApp>
+	<recentFiles editable="false">
+		<uri label="KillerRoom.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/KillerRoom.as</uri>
+		<uri label="KillerRoomChatMediaor.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/view/KillerRoomChatMediaor.as</uri>
+		<uri label="KillerRoomToolBoxMediator.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/view/KillerRoomToolBoxMediator.as</uri>
+		<uri label="KillerRoomPlayersMediator.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/view/KillerRoomPlayersMediator.as</uri>
+		<uri label="KillerRoomClient.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/model/KillerRoomClient.as</uri>
+		<uri label="KillerRoomPlayerListBoxMediator.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/view/KillerRoomPlayerListBoxMediator.as</uri>
+		<uri label="KillerRoomEvents.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/roomEvents/KillerRoomEvents.as</uri>
+		<uri label="KillerRoomPlugGameMediator.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/view/KillerRoomPlugGameMediator.as</uri>
+		<uri label="SelectOneBox.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/uas/SelectOneBox.as</uri>
+		<uri label="KillerRoomBgMediator.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/view/KillerRoomBgMediator.as</uri>
+		<uri label="KillerRoomMainMediator.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/view/KillerRoomMainMediator.as</uri>
+		<uri label="SelectList.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/uas/SelectList.as</uri>
+		<uri label="OpenWin.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/uas/OpenWin.as</uri>
+		<uri label="StringUtil.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/mx/utils/StringUtil.as</uri>
+		<uri label="KillerRoomCharVoicesController.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/controller/KillerRoomCharVoicesController.as</uri>
+		<uri label="KillerRoomData.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/model/KillerRoomData.as</uri>
+		<uri label="RecVoiceController.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/controller/RecVoiceController.as</uri>
+		<uri label="KillerRoomToolsBoxContrller.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/controller/KillerRoomToolsBoxContrller.as</uri>
+		<uri label="KillerPlayerController.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/controller/KillerPlayerController.as</uri>
+		<uri label="KillerRoomPlayerListBoxController.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/controller/KillerRoomPlayerListBoxController.as</uri>
+		<uri label="TweenLite.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/gs/TweenLite.as</uri>
+		<uri label="KillerRoomMenuController.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/controller/KillerRoomMenuController.as</uri>
+		<uri label="KillerRoomBtnsController.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/controller/KillerRoomBtnsController.as</uri>
+		<uri label="KillerRoomUserBoxController.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/controller/KillerRoomUserBoxController.as</uri>
+		<uri label="KillerRoomGameOverController.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/controller/KillerRoomGameOverController.as</uri>
+		<uri label="KillerRoomCharVoicesVo.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/controller/KillerRoomCharVoicesVo.as</uri>
+		<uri label="KillerRoomSeriesToolActController.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/controller/KillerRoomSeriesToolActController.as</uri>
+		<uri label="WAVWriter.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/com/adobe/format/WAVWriter.as</uri>
+		<uri label="KillerRoomToolsBoxChildController.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/controller/KillerRoomToolsBoxChildController.as</uri>
+		<uri label="FiguresController.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/controller/FiguresController.as</uri>
+		<uri label="FiguresFromToolController.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/controller/FiguresFromToolController.as</uri>
+		<uri label="KillerRoomPlayerListMcController.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/controller/KillerRoomPlayerListMcController.as</uri>
+	</recentFiles>
+	<locations editable="false"/>
+</projectDescription>

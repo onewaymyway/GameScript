@@ -1,0 +1,32 @@
+﻿<projectDescription>
+	<id>1238637846607</id>
+	<name>~Alert[1]</name>
+	<asVersion>0</asVersion>
+	<boundTemplate>file:///C|/Users/tangouser/AppData/Local/Adobe/Flash CS4/en/Configuration/Project/templates/boundClass_as3.as</boundTemplate>
+	<classTemplate>file:///C|/Users/tangouser/AppData/Local/Adobe/Flash CS4/en/Configuration/Project/templates/standardClass_as3.as</classTemplate>
+	<classPath>.</classPath>
+	<rootURI>C:\Users\TANGOU~1\AppData\Local\Temp\4</rootURI>
+	<flexSDK/>
+	<sources editable="false"/>
+	<libraries editable="false"/>
+	<externalLibraries editable="false"/>
+	<compileList editable="false">
+		<uri label="~Alert[1].fla">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/~Alert[1].fla</uri>
+	</compileList>
+	<defaultApp>file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/~Alert[1].fla</defaultApp>
+	<recentFiles editable="false">
+		<uri label="Alert.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/Alert.as</uri>
+		<uri label="AlertMainMediator.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/view/AlertMainMediator.as</uri>
+		<uri label="AlertFrame.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/alert/AlertFrame.as</uri>
+		<uri label="AlertFrame.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/AlertFrame.as</uri>
+		<uri label="Confirm.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/alert/Confirm.as</uri>
+		<uri label="confirm_mc.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/confirm_mc.as</uri>
+		<uri label="Alert.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/alert/Alert.as</uri>
+		<uri label="alert_mc.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/alert_mc.as</uri>
+		<uri label="AlertMsgTxt.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/AlertMsgTxt.as</uri>
+		<uri label="OpenWin.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/uas/OpenWin.as</uri>
+		<uri label="LockBg.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/LockBg.as</uri>
+		<uri label="sprite155_4.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/AlertFrame_fla/sprite155_4.as</uri>
+	</recentFiles>
+	<locations editable="false"/>
+</projectDescription>

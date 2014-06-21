@@ -1,0 +1,9 @@
+﻿<flash_project name="killerRoomBtns[1]" version="1">
+	<project_file path="./killerRoomBtns[1].fla" filetype="fla" profile="" def_file="true"/>
+	<project_file path="./killerRoomBtns_fla/idenPMBtnTxt_23.as" filetype="as"/>
+	<project_file path="./killerRoomBtns_fla/iden_Log_27.as" filetype="as"/>
+	<project_file path="./killerRoomBtns_fla/kickhostmove_17.as" filetype="as"/>
+	<project_file path="./killerRoomBtns_fla/mayorActBtnMc_24.as" filetype="as"/>
+	<project_file path="./killerRoomBtns_fla/sprite246_19.as" filetype="as"/>
+	<project_file path="./killerRoom_btns.as" filetype="as"/>
+</flash_project>

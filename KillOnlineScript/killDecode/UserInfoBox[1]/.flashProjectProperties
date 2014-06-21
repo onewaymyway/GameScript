@@ -1,0 +1,50 @@
+﻿<projectDescription>
+	<id>1238637846607</id>
+	<name>~UserInfoBox[1]</name>
+	<asVersion>0</asVersion>
+	<boundTemplate>file:///C|/Users/tangouser/AppData/Local/Adobe/Flash CS4/en/Configuration/Project/templates/boundClass_as3.as</boundTemplate>
+	<classTemplate>file:///C|/Users/tangouser/AppData/Local/Adobe/Flash CS4/en/Configuration/Project/templates/standardClass_as3.as</classTemplate>
+	<classPath>.</classPath>
+	<rootURI>C:\Users\TANGOU~1\AppData\Local\Temp\4</rootURI>
+	<flexSDK/>
+	<sources editable="false"/>
+	<libraries editable="false"/>
+	<externalLibraries editable="false"/>
+	<compileList editable="false">
+		<uri label="~UserInfoBox[1].fla">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/~UserInfoBox[1].fla</uri>
+	</compileList>
+	<defaultApp>file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/~UserInfoBox[1].fla</defaultApp>
+	<recentFiles editable="false">
+		<uri label="UserInfoBox.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/UserInfoBox.as</uri>
+		<uri label="UserInfoBoxMediator.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/view/UserInfoBoxMediator.as</uri>
+		<uri label="UserMedalForm.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/view/UserMedalForm.as</uri>
+		<uri label="UserHonorForm.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/view/UserHonorForm.as</uri>
+		<uri label="UserInfo_box.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/UserInfo_box.as</uri>
+		<uri label="UserInfoBoxForm6.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/view/UserInfoBoxForm6.as</uri>
+		<uri label="OpenWin.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/uas/OpenWin.as</uri>
+		<uri label="UserInfoBoxForm1MoodControler.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/view/UserInfoBoxForm1MoodControler.as</uri>
+		<uri label="UserMarryForm.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/view/UserMarryForm.as</uri>
+		<uri label="SelectOneBox.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/uas/SelectOneBox.as</uri>
+		<uri label="UserLuxuryForm.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/view/UserLuxuryForm.as</uri>
+		<uri label="UStr.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/uas/UStr.as</uri>
+		<uri label="UserInfoBoxForm1Controler.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/view/UserInfoBoxForm1Controler.as</uri>
+		<uri label="UserInfoBoxFormListPageController.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/view/UserInfoBoxFormListPageController.as</uri>
+		<uri label="MedalGradeLog.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/MedalGradeLog.as</uri>
+		<uri label="honorTxt.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/honorTxt.as</uri>
+		<uri label="noMarryMc.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/noMarryMc.as</uri>
+		<uri label="honorLists.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/honorLists.as</uri>
+		<uri label="qixi_52.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/fasForm5_fla/qixi_52.as</uri>
+		<uri label="sex_63.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/fasForm5_fla/sex_63.as</uri>
+		<uri label="marrybook_mc_61.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/fasForm5_fla/marrybook_mc_61.as</uri>
+		<uri label="fasForm5.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/fasForm5.as</uri>
+		<uri label="MenuBtn.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/btnas/MenuBtn.as</uri>
+		<uri label="userinfo_box_menu_btn.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/userinfo_box_menu_btn.as</uri>
+		<uri label="fri_from_mc1_62.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/fasForm5_fla/fri_from_mc1_62.as</uri>
+		<uri label="userinfo_infoForm_menu_btn.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/userinfo_infoForm_menu_btn.as</uri>
+		<uri label="fasForm4_46.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/fasForm5_fla/fasForm4_46.as</uri>
+		<uri label="userinfobox_form6_list_mc.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/userinfobox_form6_list_mc.as</uri>
+		<uri label="UserInfoBoxForm6ListChid.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/view/UserInfoBoxForm6ListChid.as</uri>
+		<uri label="ChineseLunisolarCalendar.as">file:///C|/Users/TANGOU~1/AppData/Local/Temp/4/view/ChineseLunisolarCalendar.as</uri>
+	</recentFiles>
+	<locations editable="false"/>
+</projectDescription>

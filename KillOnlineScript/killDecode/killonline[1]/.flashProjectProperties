@@ -1,0 +1,24 @@
+﻿<projectDescription>
+	<id>1238637846607</id>
+	<name>killonline[1]</name>
+	<asVersion>0</asVersion>
+	<boundTemplate>file:///C|/Users/tangouser/AppData/Local/Adobe/Flash CS4/en/Configuration/Project/templates/boundClass_as3.as</boundTemplate>
+	<classTemplate>file:///C|/Users/tangouser/AppData/Local/Adobe/Flash CS4/en/Configuration/Project/templates/standardClass_as3.as</classTemplate>
+	<classPath>.</classPath>
+	<rootURI>C:\Users\tangouser\Documents\killonline[1]</rootURI>
+	<flexSDK/>
+	<sources editable="false"/>
+	<libraries editable="false"/>
+	<externalLibraries editable="false"/>
+	<compileList editable="false">
+		<uri label="killonline[1].fla">file:///C|/Users/tangouser/Documents/killonline[1]/killonline[1].fla</uri>
+	</compileList>
+	<defaultApp>file:///C|/Users/tangouser/Documents/killonline[1]/killonline[1].fla</defaultApp>
+	<recentFiles editable="false">
+		<uri label="killonline.as">file:///C|/Users/tangouser/Documents/killonline[1]/killonline.as</uri>
+		<uri label="loadingMc.as">file:///C|/Users/tangouser/Documents/killonline[1]/loadingMc.as</uri>
+		<uri label="loding_movie_4.as">file:///C|/Users/tangouser/Documents/killonline[1]/loadingMc_fla/loding_movie_4.as</uri>
+		<uri label="_mc_3.as">file:///C|/Users/tangouser/Documents/killonline[1]/loadingMc_fla/_mc_3.as</uri>
+	</recentFiles>
+	<locations editable="false"/>
+</projectDescription>

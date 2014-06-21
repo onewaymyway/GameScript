@@ -1,0 +1,6 @@
+﻿<flash_project name="playerslist[1]" version="1">
+	<project_file path="./playerslist[1].fla" filetype="fla" profile="" def_file="true"/>
+	<project_file path="./KillerRoomPlayerlist_box.as" filetype="as"/>
+	<project_file path="./KillerRoomPlayerlist_mc.as" filetype="as"/>
+	<project_file path="./playerslist_fla/myscorllMc_8.as" filetype="as"/>
+</flash_project>

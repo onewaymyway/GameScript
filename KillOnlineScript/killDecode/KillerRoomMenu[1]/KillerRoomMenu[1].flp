@@ -1,0 +1,18 @@
+﻿<flash_project name="KillerRoomMenu[1]" version="1">
+	<project_file path="./KillerRoomMenu[1].fla" filetype="fla" profile="" def_file="true"/>
+	<project_file path="./set_form.as" filetype="as"/>
+	<project_file path="./KillerRoomMenu_fla/KillerRoomActAlertMc_1.as" filetype="as"/>
+	<project_file path="./KillerRoomMenu_fla/Timeline_45.as" filetype="as"/>
+	<project_file path="./KillerRoomMenu_fla/Uchick_box_19.as" filetype="as"/>
+	<project_file path="./KillerRoomMenu_fla/Uselect_box_8.as" filetype="as"/>
+	<project_file path="./KillerRoomMenu_fla/myscorllMc_14.as" filetype="as"/>
+	<project_file path="./KillerRoomMenu_fla/selectList_11.as" filetype="as"/>
+	<project_file path="./KillerRoomMenu_fla/task_Log_49.as" filetype="as"/>
+	<project_file path="./gameType_box.as" filetype="as"/>
+	<project_file path="./go123_mc.as" filetype="as"/>
+	<project_file path="./inter_mc.as" filetype="as"/>
+	<project_file path="./killerroom_menu.as" filetype="as"/>
+	<project_file path="./killerroom_task_prompt.as" filetype="as"/>
+	<project_file path="./partAlert_mc.as" filetype="as"/>
+	<project_file path="./select_data_mc.as" filetype="as"/>
+</flash_project>

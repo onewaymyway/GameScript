@@ -1,0 +1,34 @@
+﻿<flash_project name="KillerRoomChat[1]" version="1">
+	<project_file path="./KillerRoomChat[1].fla" filetype="fla" profile="" def_file="true"/>
+	<project_file path="./killerRoom_chat.as" filetype="as"/>
+	<project_file path="./killerroom/ChatBoxVoiceMc.as" filetype="as"/>
+	<project_file path="./killerroom/ChatBoxMc.as" filetype="as"/>
+	<project_file path="./KillerRoomChat_fla/Timeline_29.as" filetype="as"/>
+	<project_file path="./KillerRoomChat_fla/Timeline_30.as" filetype="as"/>
+	<project_file path="./KillerRoomChat_fla/Timeline_31.as" filetype="as"/>
+	<project_file path="./KillerRoomChat_fla/Timeline_32.as" filetype="as"/>
+	<project_file path="./KillerRoomChat_fla/Timeline_33.as" filetype="as"/>
+	<project_file path="./KillerRoomChat_fla/Timeline_34.as" filetype="as"/>
+	<project_file path="./KillerRoomChat_fla/Timeline_36.as" filetype="as"/>
+	<project_file path="./KillerRoomChat_fla/Timeline_38.as" filetype="as"/>
+	<project_file path="./KillerRoomChat_fla/Timeline_39.as" filetype="as"/>
+	<project_file path="./KillerRoomChat_fla/micBtnDownalt_74.as" filetype="as"/>
+	<project_file path="./KillerRoomChat_fla/micBtnoveralt_73.as" filetype="as"/>
+	<project_file path="./KillerRoomChat_fla/myscorllMc_15.as" filetype="as"/>
+	<project_file path="./KillerRoomChat_fla/sprite189_51.as" filetype="as"/>
+	<project_file path="./mobile_log.as" filetype="as"/>
+	<project_file path="./killerroom/DChatBox.as" filetype="as"/>
+	<project_file path="./killerroom/JChatBox.as" filetype="as"/>
+	<project_file path="./killerroom/SChatBox.as" filetype="as"/>
+	<project_file path="./killerroom/ChatBox.as" filetype="as"/>
+	<project_file path="./killerroom/LastSayBox.as" filetype="as"/>
+	<project_file path="./chatBox_Voicemc.as" filetype="as"/>
+	<project_file path="./chatBox_mc.as" filetype="as"/>
+	<project_file path="./DChat_box.as" filetype="as"/>
+	<project_file path="./JChat_box.as" filetype="as"/>
+	<project_file path="./SChat_box.as" filetype="as"/>
+	<project_file path="./killerRoomChatBox.as" filetype="as"/>
+	<project_file path="./killerRoomChatMsgBox.as" filetype="as"/>
+	<project_file path="./killerRoomSysMsgBox.as" filetype="as"/>
+	<project_file path="./lastSay_box.as" filetype="as"/>
+</flash_project>

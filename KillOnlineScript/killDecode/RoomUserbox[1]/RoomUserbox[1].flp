@@ -1,0 +1,7 @@
+﻿<flash_project name="RoomUserbox[1]" version="1">
+	<project_file path="./RoomUserbox[1].fla" filetype="fla" profile="" def_file="true"/>
+	<project_file path="./RoomUser_box.as" filetype="as"/>
+	<project_file path="./RoomUserbox_fla/lb_mc_6.as" filetype="as"/>
+	<project_file path="./RoomUserbox_fla/sprite198_2.as" filetype="as"/>
+	<project_file path="./room_headPic_mc.as" filetype="as"/>
+</flash_project>

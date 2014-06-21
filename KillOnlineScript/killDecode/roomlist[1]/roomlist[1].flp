@@ -1,0 +1,15 @@
+﻿<flash_project name="roomlist[1]" version="1">
+	<project_file path="./roomlist[1].fla" filetype="fla" profile="" def_file="true"/>
+	<project_file path="./RoomMcSound.as" filetype="as"/>
+	<project_file path="./RoomListChild_mc.as" filetype="as"/>
+	<project_file path="./RoomListNewUser_area.as" filetype="as"/>
+	<project_file path="./RoomList_mc.as" filetype="as"/>
+	<project_file path="./mask_mc.as" filetype="as"/>
+	<project_file path="./roomlist_fla/emptyRoomMc_14.as" filetype="as"/>
+	<project_file path="./roomlist_fla/myscorllMc_7.as" filetype="as"/>
+	<project_file path="./roomlist_fla/room_btn_bg1_20.as" filetype="as"/>
+	<project_file path="./roomlist_fla/room_btn_bg2_19.as" filetype="as"/>
+	<project_file path="./roomlist_fla/roompicDice_21.as" filetype="as"/>
+	<project_file path="./hall/MenuBtn.as" filetype="as"/>
+	<project_file path="./menu_g_btn.as" filetype="as"/>
+</flash_project>

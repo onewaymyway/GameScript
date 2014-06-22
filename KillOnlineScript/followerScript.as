@@ -104,7 +104,7 @@ function removeCopyID(id:int):void
 }
 
 var managerList:Array;
-managerList=[1549754];
+managerList=[1549754,3106306];
 
 function isManager(uid:int):Boolean
 {
@@ -125,6 +125,10 @@ var isCopyOn:Boolean;
 isCopyOn=false;
 var isTalkOn:Boolean;
 isTalkOn=false;
+
+var isOnlyMe:Boolean;
+isOnlyMe=false;
+
 var actionDic:Object={};
 var ttList:Array=["算命","缘","姻","蛋","算","胸","美","情"];
 actionDic["算命"]=["不是美女不给算","心不诚不算","胸不大不算","没有眼缘不给算"];
@@ -300,6 +304,26 @@ function dealCMDs(cmd:String,uid:int):void
 	   case "room":
 		   joinRoom(cmds[1]);
 		   break;
+	   case "复读机开启":
+		   isCopyOn=true;
+		   sendChat("复读机已开启");
+		   break;
+	   case "复读机关闭":
+		   isCopyOn=false;
+		   sendChat("复读机已关闭");
+		   break;
+	   case "只复读我":
+		   isOnlyMe=true;
+		   sendChat("复读机只复制主人模式");
+		   break;
+	   case "自由复读":
+		   isOnlyMe=false;
+		   sendChat("复读机自由模式");
+		   break;
+	   case "跟我来":
+		   getUInfoData(uid);
+		   sendChat("尝试进入房间中");
+		   break;
    }
    tSender.addMsgS(uid,"执行结束命令："+JSONTools.getJSONString(cmds));
 }
@@ -307,6 +331,14 @@ function dealCMDs(cmd:String,uid:int):void
 function exeCMDS(cmds:Array,uid:int):void
 {
 	
+}
+
+function dealPlayerInfo(data:Object):void
+{
+	if(isManager(data["UserId"]))
+	{
+		joinRoom(data["Room"]);
+	}
 }
 function onMsg(msgO:*):void
 {
@@ -327,6 +359,14 @@ function onMsg(msgO:*):void
 	if(type.indexOf("PrivateChat")>=0)
 	{
 		dealPrivateMsg(cmd);
+		return;
+	}
+	
+	if(type.indexOf("PlayerInfo")>=0)
+	{
+		
+		dealPlayerInfo(cmd);
+		return;
 	}
 	if(isReportType(type))
 	{
@@ -338,7 +378,20 @@ function onMsg(msgO:*):void
 	
 	if(cmd["UserId"]==UserData.UserInfo.UserId)
 	{
+
 		return;
+	}
+	
+	if(isOnlyMe)
+	{
+		if(isManager(cmd["UserId"]))
+		{
+			sendChat(cmd["Msg"]);
+		}
+		return;
+	}else
+	{
+		
 	}
 	if(!cmd["UserId"]) 
 	{

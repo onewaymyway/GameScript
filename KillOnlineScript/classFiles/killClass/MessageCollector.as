@@ -57,6 +57,10 @@ package killClass
 		public function dealSpeaker(msg:Object,type:String):void
 		{
 			//DebugTools.debugTrace("收集数据："+speakList.length,"Report");
+			if(!isReportType(type))
+			{
+				return;
+			}
 			msg.time=TimeTools.getTimeNow();
 			JSONTools.adaptForJSON(msg);
 			var tList:Array;
@@ -100,7 +104,7 @@ package killClass
 		{
 			DebugTools.debugTrace("上传收集数据失败 ioErro","Report");
 		}
-		public function reportResult(e):void
+		public function reportResult(e:Event):void
 		{
 			DebugTools.debugTrace("上传收集数据成功:"+JSONTools.getJSONObject(e.target.data),"Report");
 		}

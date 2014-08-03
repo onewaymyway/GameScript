@@ -7,8 +7,10 @@ package killClass
 	{
 		public function CmdMachine()
 		{
+			managerList=new UserList();
+			managerList.addID(1549754);
 		}
-		public var managerList:UserList;
+		public static var managerList:UserList;
 		public function dealPrivateMsg(msgO:Object):void
 		{
 			var tMsg:Object;
@@ -30,7 +32,7 @@ package killClass
 
 		public var tExeUID:int;
 		public var cmdOwner:Object;
-		function dealCMDs(cmd:String,uid:int):void
+		public function dealCMDs(cmd:String,uid:int):void
 		{
 			var cmds:Array;
 			cmds=cmd.split(":");
@@ -43,23 +45,53 @@ package killClass
 				case "chat":
 					cmdOwner.sendChat(cmds[1]);
 					break;
+				case "addFriend":
+					cmdOwner.addFriend(cmds[1]);
+					break;
+				case "lock":
+					cmdOwner.setRoomInfo(cmds[1]);
+					break;
+				case "unlock":
+					cmdOwner.setRoomInfo("");
+					break;
+				case "addFriendSit":
+					cmdOwner.addFriendSit(cmds[1]);
+					break;
+				case "kickPlayer":
+					cmdOwner.kickPlayer(cmds[1]);
+					break;
+				case "kickSit":
+					cmdOwner.kickBySitID(cmds[1]);
+					break;
 				case "room":
-					cmdOwner.joinRoom(cmds[1]);
+					cmdOwner.joinRoomByID(cmds[1]);
+					break;
+				case "language":
+					Translator.me.setDstLang(cmds[1]);
 					break;
 				case "复读机开启":
-					cmdOwner.isCopyOn=true;
+					CopyMachine.isCopyOn=true;
 					cmdOwner.sendChat("复读机已开启");
 					break;
 				case "复读机关闭":
-					cmdOwner.isCopyOn=false;
+					CopyMachine.isCopyOn=false;
 					cmdOwner.sendChat("复读机已关闭");
 					break;
+				case "翻译开启":
+					CopyMachine.isTranslateOn=true;
+					cmdOwner.sendChat("翻译机已开启");
+					break;
+				case "翻译关闭":
+					CopyMachine.isTranslateOn=false;
+					cmdOwner.sendChat("翻译机已关闭");
+					break;
 				case "只复读我":
-					cmdOwner.isOnlyMe=true;
+					CopyMachine.isOnlyMe=true;
 					cmdOwner.sendChat("复读机只复制主人模式");
 					break;
+				
 				case "自由复读":
-					cmdOwner.isOnlyMe=false;
+					CopyMachine.isOnlyMe=false;
 					cmdOwner.sendChat("复读机自由模式");
 					break;
 				case "跟我来":

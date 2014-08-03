@@ -12,6 +12,8 @@ package killClass
 	import flash.net.URLRequest;
 	import flash.net.URLRequestMethod;
 	import flash.net.URLVariables;
+	
+	import killClass.data.BasicInfos;
 
 	public class MessageCollector
 	{
@@ -23,8 +25,12 @@ package killClass
 			loader.addEventListener(Event.COMPLETE, reportResult);
 			loader.addEventListener(SecurityErrorEvent.SECURITY_ERROR,securityErro);
 			loader.addEventListener(IOErrorEvent.IO_ERROR,ioErro);
+			reportTypeList=["Speaker","SystemMsg","HallMsg","RoomPlayerList"];
+//			reportTypeList=["RoomPlayerList"];
+			reportTypeLenLimit={"RoomPlayerList":1};
 		}
-		public var reportTypeList:Array=["Speaker","SystemMsg","HallMsg"];
+		public var reportTypeList:Array=["Speaker","SystemMsg","HallMsg","RoomPlayerList"];
+		public var reportTypeLenLimit:Object={"RoomPlayerList":1};
 		//reportTypeList=["Speaker","SystemMsg"];
 		public var msgDic:Object={};
 		public function getMsgListByType(type:String):Array
@@ -54,6 +60,15 @@ package killClass
 			}
 			return null;
 		}
+		
+		public function getTypeLenLimit(type:String):int
+		{
+			if(reportTypeLenLimit.hasOwnProperty(type))
+			{
+				return reportTypeLenLimit[type];
+			}
+			return 10;
+		}
 		public function dealSpeaker(msg:Object,type:String):void
 		{
 			//DebugTools.debugTrace("收集数据："+speakList.length,"Report");
@@ -67,7 +82,7 @@ package killClass
 			tList=getMsgListByType(type);
 			tList.push(msg);
 			DebugTools.debugTrace("收集数据"+type+"："+tList.length,"Report");
-			if(tList.length>=10)
+			if(tList.length>=getTypeLenLimit(type))
 			{
 				reportSpeakesToSever(type,tList);
 			}
@@ -87,6 +102,7 @@ package killClass
 			uv.action="put";
 			uv.content=dataStr;
 			uv.type=type;
+			uv.zone=BasicInfos.zone;
 			
 			var rq:URLRequest = new URLRequest();
 			rq.url =url;
@@ -94,7 +110,7 @@ package killClass
 			rq.data=uv;
 				
 			loader.load(rq);
-			DebugTools.debugTrace("上传喇叭end","Report");
+			DebugTools.debugTrace("上传数据end","Report");
 		}
 		public function securityErro(e:Event):void
 		{
@@ -106,7 +122,7 @@ package killClass
 		}
 		public function reportResult(e:Event):void
 		{
-			DebugTools.debugTrace("上传收集数据成功:"+JSONTools.getJSONObject(e.target.data),"Report");
+			DebugTools.debugTrace("上传收集数据成功","Report");
 		}
 	}
 }

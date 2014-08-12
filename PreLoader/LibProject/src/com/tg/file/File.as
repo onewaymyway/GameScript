@@ -193,7 +193,7 @@
 			this._applicationDomain = this._loader.contentLoaderInfo.applicationDomain;
 			this.removeEvent();
 			//如果文件大小不一样，则重新下载
-			if (TGLoader.version[_uri] && _loader.contentLoaderInfo.bytesTotal != TGLoader.version[_uri].w)
+			if (TGLoader.version&&TGLoader.version[_uri] && _loader.contentLoaderInfo.bytesTotal != TGLoader.version[_uri].w)
 			{
 				if (!errorMap[_uri])
 					errorMap[_uri] = 1;

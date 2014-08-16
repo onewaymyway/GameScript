@@ -22,7 +22,7 @@ friendData.T="0";
 //pid=3140460;
 //ThePage=1;
 //T="0";
-getFriend(1835802);
+getFriend(1472728);
 function getFriend(pid:int):void
 {
       friendData={};

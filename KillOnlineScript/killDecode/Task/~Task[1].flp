@@ -1,0 +1,21 @@
+<flash_project name="~Task[1]" version="1">
+	<project_file filetype="fla" path="./~Task[1].fla" profile=""/>
+	<project_file filetype="as" path="./Task.as"/>
+	<project_file filetype="as" path="./taskbox/view/MainMediator.as"/>
+	<project_file filetype="as" path="./TaskBox_ListGuideChild.as"/>
+	<project_file filetype="as" path="./taskbox/controller/ListChildController.as"/>
+	<project_file filetype="as" path="./TaskBox_MainMc.as"/>
+	<project_file filetype="as" path="./taskbox/model/ListProxy.as"/>
+	<project_file filetype="as" path="./taskbox/controller/ListGuideChildController.as"/>
+	<project_file filetype="as" path="./TaskBox_ListChild.as"/>
+	<project_file filetype="as" path="./TaskBox_prizeChild.as"/>
+	<project_file filetype="as" path="./TaskBox_ListChild_fla/Timeline_2.as"/>
+	<project_file filetype="as" path="./TaskBox_ListChild_fla/Timeline_3.as"/>
+	<project_file filetype="as" path="./taskbox/model/WeiboShareProxy.as"/>
+	<project_file filetype="as" path="./taskbox/model/SetProxy.as"/>
+	<project_file filetype="as" path="./TaskBox_ListChild_fla/Timeline_23.as"/>
+	<project_file filetype="as" path="./TaskBox_ListChild_fla/myscorllMc_27.as"/>
+	<project_file filetype="as" path="./TaskBox_ListChild_fla/Timeline_21.as"/>
+	<project_file filetype="as" path="./TaskBox_ListChild_fla/Timeline_19.as"/>
+	<project_file filetype="as" path="./TaskBox_ListChild_fla/Timeline_16.as"/>
+</flash_project>

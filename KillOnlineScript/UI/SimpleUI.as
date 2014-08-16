@@ -3,7 +3,6 @@ package
 	import com.tg.Tools.DisplayUtil;
 	import com.tg.Tools.StringToolsLib;
 	import com.tg.Tools.TextTools;
-	import com.tg.Tools.TimeTools;
 	import com.tools.JSONTools;
 	
 	import flash.display.MovieClip;
@@ -60,13 +59,23 @@ package
 		
 		private function getData(evt:MouseEvent):void
 		{
-			   var urlLoader:URLLoader=new URLLoader();
-			   urlLoader.dataFormat=URLLoaderDataFormat.TEXT;
-			   
-			   var uv:URLVariables=new URLVariables();
-			   uv.uname=nameTxt.text;
-			   uv.action="get";
-			   
+			nameDics={};
+			getDataReal(0);
+		}
+		
+		private var tStep:int;
+		private var gTypeList:Array=["room","all"];
+		private function getDataReal(step:int=0):void
+		{
+			tStep=step;
+			var urlLoader:URLLoader=new URLLoader();
+			urlLoader.dataFormat=URLLoaderDataFormat.TEXT;
+			
+			var uv:URLVariables=new URLVariables();
+			uv.uname=nameTxt.text;
+			uv.action="get";
+			uv.qType=gTypeList[step];
+			
 			　　var request:URLRequest=new URLRequest();
 			
 			　　request.url="http://sogasoga.sinaapp.com/killOnline/getdata.php";
@@ -75,7 +84,7 @@ package
 			
 			　　urlLoader.load(request);
 			　　urlLoader.addEventListener(Event.COMPLETE,finish);
-			    trace("getData"+nameTxt.text);
+			trace("getData"+nameTxt.text);
 		}
 		private function finish(evt:Event):void
 		{
@@ -157,6 +166,20 @@ package
 				addUser({"UserName":tName});
 			}
 		}
+		
+		public function dealRoomData(data:Object):void
+		{
+			var userList:Array;
+			var i:int;
+			var len:int;
+			userList=data as Array;
+			if(!userList) return;
+			len=userList.length;
+			for(i=0;i<len;i++)
+			{
+				addUser(userList[i]);
+			}
+		}
 		private function dealResult(data:Object):void
 		{
 			var uname:String;
@@ -172,7 +195,7 @@ package
 			dataList=data.datas;
 			var i:int;
 			var len:int;
-			nameDics={};
+//			nameDics={};
 			len=dataList.length;
 			
 			var j:int;
@@ -211,6 +234,13 @@ package
 					{
 						getName(tLData.Msg);
 					}
+					
+					if(tType=="RoomPlayerList")
+					{
+						
+						dealRoomData(tLData);
+						continue;
+					}
 					if((tLData.Msg as String).indexOf(uname)>=0||(tLData.UserName&&(tLData.UserName as String).indexOf(uname)>=0))
 					{
 						switch(tType)
@@ -230,9 +260,16 @@ package
 				}
 			}
 			
-			var rst:String;
-			rst=TextTools.getColorText("登录信息：\n"+logList.join("\n"),0xFFFF00)+TextTools.getColorText("\n喇叭信息：\n"+speakerList.join("\n"),0x00FFFF)+TextTools.getColorText("\n公告信息：\n"+bbList.join("\n"),0xFF00FF);
-			outTxt.htmlText=rst+"\n"+TextTools.getColorText(getUsersStr(),0xFF8800);
+			if(tStep==0)
+			{
+				getDataReal(1);
+			}else
+			{
+				var rst:String;
+				rst=TextTools.getColorText("登录信息：\n"+logList.join("\n"),0xFFFF00)+TextTools.getColorText("\n喇叭信息：\n"+speakerList.join("\n"),0x00FFFF)+TextTools.getColorText("\n公告信息：\n"+bbList.join("\n"),0xFF00FF);
+				outTxt.htmlText=rst+"\n"+TextTools.getColorText(getUsersStr(),0xFF8800);
+			}
+			
 			
 		}
 	}

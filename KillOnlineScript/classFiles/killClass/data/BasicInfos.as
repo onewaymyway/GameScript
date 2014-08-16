@@ -2,6 +2,7 @@ package killClass.data
 {
 	import com.smartfoxserver.v2.entities.data.SFSObject;
 	import com.smartfoxserver.v2.requests.LoginRequest;
+	import com.tg.Tools.StringToolsLib;
 	import com.tools.DebugTools;
 	import com.tools.JSONTools;
 	
@@ -13,6 +14,7 @@ package killClass.data
 	import flash.net.URLVariables;
 	
 	import killClass.KillClient;
+	import killClass.tools.Base64Killer;
 
 	public class BasicInfos
 	{
@@ -44,7 +46,27 @@ package killClass.data
 			var loginO:LoginRequest= new LoginRequest("", "", zone, data);
 			return loginO;
 		}
+		public static function getLoginDataS(uValue:String,uip:String,line:int=1,room:int=0,zone:String=""):LoginRequest
+		{
+			var data:* = new SFSObject();
+			data.putUtfString("UV", uValue);
+			data.putUtfString("IP", uip);
+			data.putInt("L", line);
+			data.putInt("R",room);
+			var loginO:LoginRequest= new LoginRequest("", "", zone, data);
+			return loginO;
+		}
 		
+		public static var tIPID:int=140;
+		public static function getAUserIP():String
+		{
+			tIPID++;
+			if(tIPID>999)
+			{
+				tIPID=140;
+			}
+			return "hvZ4W"+tIPID+"IHxLhs3z4uXylQ==";
+		}
 		public static function loadUserInfo(uname:String):void
 		{
 			var urlLoader:URLLoader=new URLLoader();
@@ -80,9 +102,13 @@ package killClass.data
 			tUInfo= JSONTools.getJSONObject(tO.datas[0].data);
 			
 			userValue=tUInfo.uservalues;
-			userIP=tUInfo.userip+"2";
+			userIP=tUInfo.userip+int(Math.random()*10);
 			zone=tUInfo.Zone;
-			userValue=tUInfo.uservalues;
+//			userValue="0EHBDuf%2bUYxbLyag%2fOb7r4zDs0i1jxjT";
+//			userValue="0EHBDuf+UYxbLyag/Ob7r4zDs0i1jxjT";
+//			userIP=Base64Killer.encode("101.39.188.121");
+			userIP="hvZ4W279IHxLhs3z4uXylQ==";
+			userIP="hvZ4W"+int(Math.random()*10)+"79IHxLhs3z4uXylQ==";
 			
 			
 			DebugTools.debugTrace("uInfo:"+tUInfo.name,"loadInfo",tUInfo);

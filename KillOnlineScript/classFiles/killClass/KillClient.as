@@ -81,7 +81,7 @@ package killClass
 				this.connection.disconnect();
 			}
 			
-			
+			trace("trylogin:"+BasicInfos.userIP);
 			//		erver:ft2.ss911.cn:8005,ft2.ss911.cn:443
 			this.connection.connect(BasicInfos.severAdd,BasicInfos.port);
 			return;

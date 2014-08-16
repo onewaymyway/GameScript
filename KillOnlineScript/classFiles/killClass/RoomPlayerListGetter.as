@@ -16,7 +16,7 @@ package killClass
 		
 		
 		public var RoomUsersSo:SO;
-		public var tRoomID:int;
+		public var tRoomID:int=-1;
 		
 		private static var instance:RoomPlayerListGetter;
 		public static function get me():RoomPlayerListGetter

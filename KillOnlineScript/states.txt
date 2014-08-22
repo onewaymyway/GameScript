@@ -1,0 +1,13 @@
+playerGameState:
+viewer
+player
+dead
+wait
+ready
+
+
+gameStates
+0:
+1:nighting
+2:daying
+3:end
